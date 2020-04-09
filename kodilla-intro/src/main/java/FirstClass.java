@@ -14,7 +14,7 @@ public class FirstClass {
             heavyNotebook.checkWeight();
             heavyNotebook.isItWorth();
             System.out.println(".......................................");
-        Notebook oldNotebook = new Notebook(1600, 500, 2005);
+        Notebook oldNotebook = new Notebook(1500, 500, 2005);
             System.out.println(oldNotebook.weight + "g " + oldNotebook.price +"zł " + oldNotebook.year + "rok");
             oldNotebook.checkPrice();
             oldNotebook.checkWeight();
@@ -44,5 +44,19 @@ public class FirstClass {
             notebookApple.checkWeight();
             notebookApple.isItWorth();
             System.out.println(".......................................");
+
+        LeapYear isLeapYear = new LeapYear(2020);
+            isLeapYear.isItLeap();
+        LeapYear isLeapYear2 = new LeapYear(2034);
+            isLeapYear2.isItLeap();
+        LeapYear isLeapYear3 = new LeapYear(2035);
+            isLeapYear3.isItLeap();
+        LeapYear isLeapYear4 = new LeapYear(2036);
+            isLeapYear4.isItLeap();
+        LeapYear isLeapYear5 = new LeapYear(2037);
+            isLeapYear5.isItLeap();
     }
+
+
+
 }
