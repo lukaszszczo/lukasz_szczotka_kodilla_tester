@@ -38,10 +38,7 @@ public class Notebook {
            System.out.println("Hard choice");
        }
        }
-       public void show(){
 
-
-       }
      }
 
 
