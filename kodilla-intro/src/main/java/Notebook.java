@@ -3,6 +3,7 @@ public class Notebook {
     int weight;
     int price;
     int year;
+    int switchcase;
 
     public Notebook(int weight, int price, int year) {
         this.weight = weight;
@@ -11,14 +12,27 @@ public class Notebook {
     }
 
     public void checkPrice() {
+
         if (this.price <= 600) {
-            System.out.println("This notebook is cheap.");
+            switchcase = 0;
         }else if (this.price > 600 && this.price < 1000){
-            System.out.println("The price is good.");
+            switchcase = 1;
         }else {
-            System.out.println("This notebook is expensive.");
+            switchcase = 2;
+        }
+
+        switch (switchcase) {
+            case 0 :
+                System.out.println("This notebook is cheap.");
+                break;
+            case 1 :
+                System.out.println("The price is good.");
+                break;
+            default:
+                System.out.println("This notebook is expensive.");
         }
     }
+
 
     public void checkWeight(){
         if ( this.weight <= 1500) {

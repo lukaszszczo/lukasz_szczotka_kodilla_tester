@@ -20,13 +20,13 @@ public class FirstClass {
             oldNotebook.checkWeight();
             oldNotebook.isItWorth();
             System.out.println(".......................................");
-        Notebook notebookHP = new Notebook(800, 3000, 2043);
+        Notebook notebookHP = new Notebook(800, 700, 2043);
             System.out.println(notebookHP.weight + "g " + notebookHP.price +"zł " + notebookHP.year + "rok");
             notebookHP.checkPrice();
             notebookHP.checkWeight();
             notebookHP.isItWorth();
             System.out.println(".......................................");
-        Notebook notebookAsus = new Notebook(900, 1000, 2018);
+        Notebook notebookAsus = new Notebook(900, 1001, 2018);
             System.out.println(notebookAsus.weight + "g " + notebookAsus.price +"zł " + notebookAsus.year + "rok");
             notebookAsus.checkPrice();
             notebookAsus.checkWeight();
