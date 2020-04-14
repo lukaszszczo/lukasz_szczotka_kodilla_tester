@@ -13,23 +13,27 @@ public class Notebook {
 
     public void checkPrice() {
 
-        if (this.price <= 600) {
-            switchcase = 0;
-        }else if (this.price > 600 && this.price < 1000){
-            switchcase = 1;
-        }else {
-            switchcase = 2;
-        }
+//        Math.signum zwraca -1.0 jesli podany parametr jest mniejszy od 0
+//        Math.signum zwraca  0.0 jesli podany parametr jest równy 0
+//        Math.signum zwraca  1.0 jesli podany parametr jest większy od 0
+//        Mathsignum zwraca wartość zmiennoprzecinkową typu float, która nie może być użyta w switch
+//        (int) wymusza zmiane wartości float na int
+        switchcase = (int)(Math.signum(price - 600) + Math.signum(price - 1000));
 
         switch (switchcase) {
-            case 0 :
+            case -2 :
+            case -1 :
                 System.out.println("This notebook is cheap.");
                 break;
-            case 1 :
+            case 0 :
                 System.out.println("The price is good.");
                 break;
-            default:
+            case 1 :
+            case 2 :
                 System.out.println("This notebook is expensive.");
+                break;
+            default:
+                System.out.println("Cannot calculate price category");
         }
     }
 
