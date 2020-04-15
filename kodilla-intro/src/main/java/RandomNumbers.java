@@ -1,7 +1,9 @@
+/*
 import java.util.Random;
+
 public class RandomNumbers {
 
-        int max = 5000;
+    int max = 5000;
 
     public int RandomNumber() {
         Random random = new Random();
@@ -14,13 +16,15 @@ public class RandomNumbers {
         }
         return result;
     }
-     public int maxRandom(){}
 
-    public int minRandom(){}
+    public int maxRandom() {
+    }
+
+    public int minRandom() {
+    }
 }
 
-public void main (String[] args){
+    public void main(String[] args) {
 
 
-
-}
+    }*/

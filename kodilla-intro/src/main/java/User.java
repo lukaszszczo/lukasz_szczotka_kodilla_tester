@@ -7,14 +7,16 @@ public class User {
         this.name = name;
         this.age = age;
     }
-        public int getAge() {
+
+    public int getAge() {
         return age;
     }
-        public String getName() {
-        return name;
-        }
 
+    public String getName() {
+        return name;
     }
+
+}
 
 
 

@@ -6,23 +6,24 @@ public class LeapYear {
         this.leapYear = leapYear;
 
     }
+
     public boolean isLeap() {
-        if ((this.leapYear % 4 == 0) && (this.leapYear%100 > 0) || (this.leapYear%400 == 0) ){
+        if ((this.leapYear % 4 == 0) && (this.leapYear % 100 > 0) || (this.leapYear % 400 == 0)) {
             return true;
-        }   else
-        {
+        } else {
             return false;
         }
 
     }
-    public void isItLeap(){
+
+    public void isItLeap() {
         if (isLeap() == true) {
-            System.out.println( this.leapYear + " rok jest rokiem przestępnym");
-        }else {
+            System.out.println(this.leapYear + " rok jest rokiem przestępnym");
+        } else {
             System.out.println(this.leapYear + " rok nie rokiem przestępnym");
-            }
         }
     }
+}
 
 // hmm nie wiem czy to dobrze bo są dwie metody a nie jedna.
 //
