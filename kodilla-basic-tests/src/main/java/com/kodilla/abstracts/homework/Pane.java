@@ -1,4 +1,4 @@
-package com.kodilla.inheritance.abstracts.homework;
+package com.kodilla.abstracts.homework;
 
 public class Pane extends Shape {
     public Pane(int width, int height, int length) {

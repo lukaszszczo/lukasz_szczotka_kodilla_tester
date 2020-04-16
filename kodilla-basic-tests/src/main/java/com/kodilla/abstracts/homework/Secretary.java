@@ -1,5 +1,5 @@
 /*
-package com.kodilla.inheritance.abstracts.homework;
+package com.kodilla.abstracts.homework;
 
 public class Secretary extends Job {
     public Secretary(int salary, String responsibilities) {
