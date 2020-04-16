@@ -1,3 +1,4 @@
+/*
 package com.kodilla.inheritance.abstracts.homework;
 
 public class Secretary extends Job {
@@ -10,3 +11,4 @@ public class Secretary extends Job {
 
     }
 }
+*/

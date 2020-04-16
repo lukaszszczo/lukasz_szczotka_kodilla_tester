@@ -1,3 +1,4 @@
+/*
 package com.kodilla.inheritance.abstracts.homework;
 
 public class Policeman extends Job {
@@ -10,3 +11,4 @@ public class Policeman extends Job {
 
     }
 }
+*/

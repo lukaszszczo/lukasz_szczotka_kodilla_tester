@@ -1,3 +1,4 @@
+/*
 package com.kodilla.inheritance.abstracts.homework;
 
 public class Tester extends Job {
@@ -10,3 +11,4 @@ public class Tester extends Job {
         getResponsibilities();
     }
 }
+*/

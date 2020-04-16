@@ -7,11 +7,13 @@ public class Windows extends OperatingSystem {
         super(name, age);
     }
 
+    @Override
     public void turnOn() {
         System.out.println("Uruchamiam system operacyjny napisujacaca metoda");
 
     }
 
+    @Override
     public void turnOf() {
         System.out.println("Wylaczam system operacyjny napisujaca metoda");
     }

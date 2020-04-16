@@ -1,3 +1,4 @@
+/*
 package com.kodilla.inheritance.abstracts.homework;
 
 public abstract class Job {
@@ -21,3 +22,4 @@ public abstract class Job {
 
     public abstract void giveJob();
 }
+*/

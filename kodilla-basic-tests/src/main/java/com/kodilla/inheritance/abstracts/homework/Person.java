@@ -1,3 +1,4 @@
+/*
 package com.kodilla.inheritance.abstracts.homework;
 
 
@@ -16,3 +17,4 @@ public class Person {
 
 
 }
+*/
