@@ -1,4 +1,3 @@
-/*
 package com.kodilla.abstracts.homework;
 
 public class Tester extends Job {
@@ -7,8 +6,9 @@ public class Tester extends Job {
     }
 
     @Override
-    public void giveJob() {
-        getResponsibilities();
+    public String getResponsibilities() {
+        return responsibilities;
     }
+
+
 }
-*/

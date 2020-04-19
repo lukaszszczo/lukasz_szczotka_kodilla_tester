@@ -4,15 +4,15 @@ package com.kodilla.basic_assertion;
 public class Calculator {
 
 
-    public double sum(double a, double b) {
+    public int sum(int a, int b) {
         return a + b;
     }
 
-    public double subtract(double a, double b) {
+    public int subtract(int a, int b) {
         return a - b;
     }
 
-    public double pow(double a) {
-        return Math.pow(a, 2);
+    public int pow(int a) {
+        return a*a;
     }
 }

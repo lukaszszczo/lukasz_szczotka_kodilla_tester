@@ -33,4 +33,3 @@ public class SimpleArray {
 
     }
 }
-// 3h nad tym siedziałem. Najwiekszy problem zrobiły mi te gettery getAge i getName. Jak juz to ogarnalem to szybko sobie poradziłem.

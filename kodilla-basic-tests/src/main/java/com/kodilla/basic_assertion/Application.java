@@ -4,17 +4,17 @@ public class Application {
 
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
-        double a = 10;
-        double b = 5;
+        int a = 10;
+        int b = 5;
 
-        double sumResult = calculator.sum(a, b);
+        int sumResult = calculator.sum(a, b);
         boolean correctSum = ResultChecker.assertEquals(15, sumResult);
         if (correctSum) {
             System.out.println("Metoda sum działa poprawnie dla liczb " + a + " i " + b);
         } else {
             System.out.println("Metoda sum nie działa poprawnie dla liczb " + a + " i " + b);
         }
-        double substractResult = calculator.subtract(a, b);
+        int substractResult = calculator.subtract(a, b);
         boolean correctSubstract = ResultChecker.assertEquals(5, substractResult);
         if (correctSubstract) {
             System.out.println("Metoda substract działa poprawnie dla liczb " + a + " i " + b);
@@ -22,8 +22,8 @@ public class Application {
             System.out.println("Metoda substract nie działa poprawnie dla liczb " + a + " i " + b);
         }
 
-        double powResult = calculator.pow(a);
-        boolean correctPow = ResultChecker.assertEquals(101, powResult);
+        int powResult = calculator.pow(a);
+        boolean correctPow = ResultChecker.assertEquals(100, powResult);
         if (correctPow) {
             System.out.println("Metoda pow działa poprawnie dla liczby " + a);
         } else {

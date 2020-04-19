@@ -1,30 +1,51 @@
-/*
+
 import java.util.Random;
 
 public class RandomNumbers {
 
-    int max = 5000;
 
-    public int RandomNumber() {
+    int maxRandom;
+    int temp;
+    int tempMin;
+    int tempMax;
+
+    public RandomNumbers(int maxRandom, int temp, int tempMin, int tempMax) {
+        this.maxRandom = maxRandom;
+        this.temp = temp;
+        this.tempMin = tempMin;
+        this.tempMax = tempMax;
+    }
+
+    public void RandomNumber() {
         Random random = new Random();
-        int result = 0;
         int sum = 0;
-        while (sum < max) {
-            int temp = random.nextInt(31);
+
+        while (sum <= maxRandom) {
+            temp = random.nextInt(31);
             sum = sum + temp;
-            result = result + sum;
+            System.out.println(temp);
+            if (temp < tempMin) {
+                tempMin = temp;
+
+
+            }
+            if (temp > tempMax) {
+                tempMax = temp;
+
+            }
         }
-        return result;
     }
 
-    public int maxRandom() {
+    public void getMin() {
+        System.out.println("minimalna wylosowana liczba to = " + tempMin);
+
+
     }
 
-    public int minRandom() {
+    public void getMax() {
+        System.out.println("maxksymalna wylosowana liczba to = " + tempMax);
+
     }
+
 }
 
-    public void main(String[] args) {
-
-
-    }*/

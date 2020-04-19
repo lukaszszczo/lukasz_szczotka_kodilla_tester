@@ -1,5 +1,4 @@
-/*
-package com.kodilla.abstracts.homework;
+        package com.kodilla.abstracts.homework;
 
 public class Secretary extends Job {
     public Secretary(int salary, String responsibilities) {
@@ -7,8 +6,9 @@ public class Secretary extends Job {
     }
 
     @Override
-    public void giveJob() {
-
+    public String getResponsibilities() {
+        return responsibilities;
     }
+
+
 }
-*/
