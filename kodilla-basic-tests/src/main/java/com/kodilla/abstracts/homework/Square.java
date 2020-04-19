@@ -1,20 +1,22 @@
 package com.kodilla.abstracts.homework;
 
 public class Square extends Shape {
-    public Square(int width, int height, int length) {
-        super(width, height, length);
+    private int side;
+
+    public Square(int side) {
+        this.side = side;
     }
 
     @Override
     public void field() {
 
-        System.out.println("pole kwadratu " + ((getWidth() * getHeight())));
+        System.out.println("pole kwadratu " + ((side * side)));
 
     }
 
     @Override
     public void circumference() {
-        System.out.println("obwód kwadratu " + (getWidth() + getWidth()));
+        System.out.println("obwód kwadratu " + (4 * side));
 
     }
 

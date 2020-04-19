@@ -5,20 +5,20 @@ public class RandomNumbers {
 
 
     int maxRandom;
-    int temp;
     int tempMin;
-    int tempMax;
+    int max;
 
-    public RandomNumbers(int maxRandom, int temp, int tempMin, int tempMax) {
+    public RandomNumbers(int maxRandom) {
         this.maxRandom = maxRandom;
-        this.temp = temp;
-        this.tempMin = tempMin;
-        this.tempMax = tempMax;
     }
 
-    public void RandomNumber() {
-        Random random = new Random();
+    public void genNumber() {
+        int temp = 0;
         int sum = 0;
+        tempMin = maxRandom;
+        max = 0;
+
+        Random random = new Random();
 
         while (sum <= maxRandom) {
             temp = random.nextInt(31);
@@ -29,8 +29,8 @@ public class RandomNumbers {
 
 
             }
-            if (temp > tempMax) {
-                tempMax = temp;
+            if (temp > max) {
+                max = temp;
 
             }
         }
@@ -43,7 +43,7 @@ public class RandomNumbers {
     }
 
     public void getMax() {
-        System.out.println("maxksymalna wylosowana liczba to = " + tempMax);
+        System.out.println("maxksymalna wylosowana liczba to = " + max);
 
     }
 
