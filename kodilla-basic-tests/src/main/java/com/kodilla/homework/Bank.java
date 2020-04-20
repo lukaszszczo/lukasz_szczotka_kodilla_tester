@@ -1,16 +1,18 @@
 package com.kodilla.homework;
 
 public class Bank {
-            private String bankName;
-            private int[] banks;
+
+            String bankName;
+            String[] banks = new String[2];
 
              public Bank (String bankName) {
-                 this.banks = new int[0];
                  this.bankName = bankName;
+                 this.banks = new String[2];
              }
 
 
-    }
+
+}
 
 
 
