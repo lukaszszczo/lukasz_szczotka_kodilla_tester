@@ -29,6 +29,10 @@ public class CashMachine {
     }
 
     public double getPaymentAvg() { // zwraca srednia wplat
+        if (this.transactions.length == 0) {
+            return 0;
+        }
+
         double avgPayment = 0;
         for (int i = 0; i < this.transactions.length; i++)
             if (this.transactions[i] > 0) {
@@ -38,6 +42,9 @@ public class CashMachine {
     }
 
     public double getPayoffAvg() { // zwraca srednia wyplat
+        if (this.transactions.length == 0) {
+            return 0;
+        }
         double avgPayoff = 0;
         for (int i = 0; i < this.transactions.length; i++)
             if (this.transactions[i] < 0) {
@@ -71,5 +78,10 @@ public class CashMachine {
     public int getPayoff() { //zwraca ilosc wyplat
         return payoff;
     }
+
+    public String getName() {
+        return name;
+    }
+
 
 }

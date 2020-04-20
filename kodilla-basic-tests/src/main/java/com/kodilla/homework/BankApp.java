@@ -2,56 +2,53 @@ package com.kodilla.homework;
 
 public class BankApp {
     public static void main(String[] args) {
-        Bank bank = new Bank();                   // to mi sie nie podoba... że musze bank.pierwszy albo bank.cashmachines[0]
-        Bank bank2 = new Bank();
-        Bank bank3 = new Bank();
 
+        CashMachine first = new CashMachine("Bankomat pierwszy");
 
-        bank.addTransaction(1);
-        bank.addTransaction(-664356341);
-        bank.addTransaction(1);
-        bank.addTransaction(879791);
-        bank.addTransaction(1);
-        bank.addTransaction(1);
-        bank.addTransaction(7);
+        first.add(500);
+        first.add(-500);
+        first.add(500);
 
-                System.out.println("Saldo bankomatu " + bank.cashmachines[0].getSum());
-        System.out.println("Ilosc wszystkich tranzakcji to " + bank.cashmachines[0].getCount());
-        System.out.println("Ilosc wyplat to " + bank.cashmachines[0].getPayoff());
-        System.out.println("Ilosc wpłat to " + bank.cashmachines[0].getPayment());
-        System.out.println("Sredia wartosc wplat to " + bank.cashmachines[0].getPaymentAvg());
-        System.out.println("Sredia wartosc wypłat to " + bank.cashmachines[0].getPayoffAvg());
-        System.out.println(".........................................");
-
-        bank2.addTransaction(10);
-        bank2.addTransaction(-10);
-        bank2.addTransaction(10);
-
-        System.out.println("Saldo bankomatu " + bank2.cashmachines[1].getSum());
-        System.out.println("Ilosc wszystkich tranzakcji to " + bank2.cashmachines[1].getCount());
-        System.out.println("Ilosc wyplat to " + bank2.cashmachines[1].getPayoff());
-        System.out.println("Ilosc wpłat to " + bank2.cashmachines[1].getPayment());
-        System.out.println("Sredia wartosc wplat to " + bank2.cashmachines[1].getPaymentAvg());
-        System.out.println("Sredia wartosc wplat to " + bank2.cashmachines[1].getPayoffAvg());
-        System.out.println(".........................................");
-
-        bank3.addTransaction(10);
-        bank3.addTransaction(10);
-        bank3.addTransaction(-1430);
-        bank3.addTransaction(10);
-        bank3.addTransaction(10);
-        bank3.addTransaction(10);
-
-        System.out.println("Saldo bankomatu " + bank3.cashmachines[2].getSum());
-        System.out.println("Ilosc wszystkich tranzakcji to " + bank3.cashmachines[2].getCount());
-        System.out.println("Ilosc wyplat to " + bank3.cashmachines[2].getPayoff());
-        System.out.println("Ilosc wpłat to " + bank3.cashmachines[2].getPayment());
-        System.out.println("Sredia wartosc wplat to " + bank3.cashmachines[2].getPaymentAvg());
-        System.out.println("Sredia wartosc wplat to " + bank3.cashmachines[2].getPayoffAvg());
+        System.out.println("Nazwa bankomatu: " + first.getName());
+        System.out.println("Saldo bankomatu: " + first.getSum());
+        System.out.println("Ilosc wszystkich tranzakcji to: " + first.getCount());
+        System.out.println("Ilosc wyplat to: " + first.getPayoff());
+        System.out.println("Ilosc wpłat to: " + first.getPayment());
+        System.out.println("Sredia wartosc wplat to: " + first.getPaymentAvg());
+        System.out.println("Sredia wartosc wypłat to: " + first.getPayoffAvg());
         System.out.println(".........................................");
 
 
+        CashMachine second = new CashMachine("To bedzie drugi bankomat");
+        second.add(1000);
+        second.add(-1000);
+        second.add(3000);
+        second.add(-1000);
+        second.add(10000);
+        second.add(1000);
 
+        System.out.println("Nazwa bankomatu: " + second.getName());
+        System.out.println("Saldo bankomatu: " + second.getSum());
+        System.out.println("Ilosc wszystkich tranzakcji to: " + second.getCount());
+        System.out.println("Ilosc wyplat to: " + second.getPayoff());
+        System.out.println("Ilosc wpłat to: " + second.getPayment());
+        System.out.println("Sredia wartosc wplat to: " + second.getPaymentAvg());
+        System.out.println("Sredia wartosc wypłat to: " + second.getPayoffAvg());
+        System.out.println(".........................................");
+
+
+        CashMachine[] cashMachines = new CashMachine[]{first, second}; // utworzenie tablicy bankomatów i przypisanie w 0 i 1 dwoch bankomatow
+
+        Bank pko = new Bank("Bank PKO!"); // utworzenie banku1
+        Bank ing = new Bank("Bank ING!"); // utworzenie banku2
+
+        Bank[] banks = new Bank[]{pko, ing}; // mam tablice z dwoma bankami
+
+
+        /*banks[0] = first;  ----------        takie wynalazki mi nie przechodza.
+        Bank[] banks = new Bank[]{first};
+        Bank[] banks = new Bank[]{first};
+*/
     }
 
 }
