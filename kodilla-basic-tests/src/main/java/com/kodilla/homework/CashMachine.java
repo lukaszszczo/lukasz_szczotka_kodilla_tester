@@ -9,7 +9,6 @@ public class CashMachine {
     private int payoff; //wyplata
 
 
-
     public CashMachine(String name) {
         this.transactionCount = 0;
         this.transactions = new int[0];
@@ -72,4 +71,5 @@ public class CashMachine {
     public int getPayoff() { //zwraca ilosc wyplat
         return payoff;
     }
+
 }

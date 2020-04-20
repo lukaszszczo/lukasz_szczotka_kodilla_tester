@@ -10,18 +10,22 @@ public class Bank {
     CashMachine[] cashmachines = new CashMachine[]{Pierwszy, Drugi, Trzeci};
 
 
-
     public void addTransaction(int money) {
         this.cashmachines[0].add(money);
         this.cashmachines[1].add(money);
         this.cashmachines[2].add(money);
 
-
-
-
     }
 
+    public int getAllSaldo() { // sumowanie sald nie dziala
+        int allSaldo = 0;
+        for (int i = 0; i < cashmachines.length; i++) {
+            allSaldo = cashmachines[i].getSum() + allSaldo;
+        }
+
+        return allSaldo;
     }
+}
 
 
 

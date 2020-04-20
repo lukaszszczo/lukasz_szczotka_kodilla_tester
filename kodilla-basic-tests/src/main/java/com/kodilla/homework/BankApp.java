@@ -7,13 +7,14 @@ public class BankApp {
         Bank bank3 = new Bank();
 
 
-        bank.addTransaction(4404);
-        bank.addTransaction(900);
-        bank.addTransaction(-900);
-        bank.addTransaction(200);
-        bank.addTransaction(-400);
-        bank.addTransaction(100);
-        bank.addTransaction(800);
+        bank.addTransaction(1);
+        bank.addTransaction(-664356341);
+        bank.addTransaction(1);
+        bank.addTransaction(879791);
+        bank.addTransaction(1);
+        bank.addTransaction(1);
+        bank.addTransaction(7);
+
                 System.out.println("Saldo bankomatu " + bank.cashmachines[0].getSum());
         System.out.println("Ilosc wszystkich tranzakcji to " + bank.cashmachines[0].getCount());
         System.out.println("Ilosc wyplat to " + bank.cashmachines[0].getPayoff());
@@ -22,11 +23,10 @@ public class BankApp {
         System.out.println("Sredia wartosc wypłat to " + bank.cashmachines[0].getPayoffAvg());
         System.out.println(".........................................");
 
-        bank2.addTransaction(1000);
-        bank2.addTransaction(444);
-        bank2.addTransaction(1000);
-        bank2.addTransaction(1000);
-        bank2.addTransaction(-1000);
+        bank2.addTransaction(10);
+        bank2.addTransaction(-10);
+        bank2.addTransaction(10);
+
         System.out.println("Saldo bankomatu " + bank2.cashmachines[1].getSum());
         System.out.println("Ilosc wszystkich tranzakcji to " + bank2.cashmachines[1].getCount());
         System.out.println("Ilosc wyplat to " + bank2.cashmachines[1].getPayoff());
@@ -35,10 +35,13 @@ public class BankApp {
         System.out.println("Sredia wartosc wplat to " + bank2.cashmachines[1].getPayoffAvg());
         System.out.println(".........................................");
 
-        bank3.addTransaction(3000);
-        bank3.addTransaction(1000);
-        bank3.addTransaction(-3000);
-        bank3.addTransaction(-1000);
+        bank3.addTransaction(10);
+        bank3.addTransaction(10);
+        bank3.addTransaction(-1430);
+        bank3.addTransaction(10);
+        bank3.addTransaction(10);
+        bank3.addTransaction(10);
+
         System.out.println("Saldo bankomatu " + bank3.cashmachines[2].getSum());
         System.out.println("Ilosc wszystkich tranzakcji to " + bank3.cashmachines[2].getCount());
         System.out.println("Ilosc wyplat to " + bank3.cashmachines[2].getPayoff());
