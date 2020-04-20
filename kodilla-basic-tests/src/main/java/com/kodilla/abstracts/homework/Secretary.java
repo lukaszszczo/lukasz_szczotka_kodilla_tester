@@ -1,8 +1,8 @@
-        package com.kodilla.abstracts.homework;
+package com.kodilla.abstracts.homework;
 
 public class Secretary extends Job {
-    public Secretary(int salary, String responsibilities) {
-        super(3245, "Obsługa biura");
+    public Secretary(int salary, String responsibilities, String jobName) {
+        super(3245, "Obsługa biura", "Sekretarka");
     }
 
     @Override
@@ -10,5 +10,9 @@ public class Secretary extends Job {
         return responsibilities;
     }
 
+    @Override
+    public String getJobName() {
+        return jobName;
+    }
 
 }
