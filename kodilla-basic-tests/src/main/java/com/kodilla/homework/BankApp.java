@@ -5,9 +5,11 @@ public class BankApp {
 
         CashMachine first = new CashMachine("Bankomat pierwszy");
 
-        first.add(500);
-        first.add(-500);
-        first.add(500);
+        first.add(10);
+        first.add(10);
+        first.add(10);
+        first.add(-75);
+
 
         System.out.println("Nazwa bankomatu: " + first.getName());
         System.out.println("Saldo bankomatu: " + first.getSum());
@@ -20,12 +22,11 @@ public class BankApp {
 
 
         CashMachine second = new CashMachine("To bedzie drugi bankomat");
-        second.add(2000);
+        second.add(50);
+        second.add(50);
+        second.add(50);
         second.add(-1000);
-        second.add(3000);
-        second.add(-1000);
-        second.add(10000);
-        second.add(1000);
+
 
         System.out.println("Nazwa bankomatu: " + second.getName());
         System.out.println("Saldo bankomatu: " + second.getSum());
@@ -39,11 +40,14 @@ public class BankApp {
         CashMachine[] cashMachines = new CashMachine[]{first, second}; // utworzenie tablicy bankomatów i przypisanie w 0 i 1 dwoch bankomatow
 
 
-        Bank pko = new Bank("PKO",(cashMachines));
-        System.out.println("W banku: " + pko.bankName + " ilosc bankomatow to; " + pko.cashMachine.length); // ok zgadza sie ma przypisane dwa bankomaty.
-        System.out.println("Saldo dla Banku: " + pko.bankName + " to " + pko.sumAll());
-
-
+        Bank pko = new Bank("PKO", (cashMachines));
+        System.out.println("W banku: " + pko.bankName + " ilosc bankomatow to: " + pko.cashMachine.length); // ok zgadza sie ma przypisane dwa bankomaty.
+        System.out.println("Saldo całkowite dla Banku: " + pko.bankName + " to " + pko.sumAll());
+        System.out.println("ilość transakcji z wszystkich bankomatów " + pko.bankName + " to: " + pko.getCountBank());
+        System.out.println("Srednia wartość wpłaty w  " + pko.bankName + " to " + pko.getAvgPaymentBank());
+        System.out.println("Srednia wartość wypłaty w  " + pko.bankName + " to " + pko.getAvgPayOfftBank());
+        System.out.println("liczba transakcji związanych z wpłatą " + pko.getCountPaymentBank());
+        System.out.println("liczba transakcji związanych z wypłatą " + pko.getCountPayoffBank());
 
 
     }
