@@ -72,7 +72,7 @@ public class BankTestSuite {
         CashMachine cashMachine1 = new CashMachine("Test");
         CashMachine cashMachine2 = new CashMachine("Test");
         cashMachine1.add(100);
-        cashMachine1.add(100);
+        cashMachine1.add(0);
         cashMachine2.add(100);
         CashMachine[] cashMachines = new CashMachine[]{cashMachine1, cashMachine2};
         Bank testowy = new Bank("testowy", (cashMachines));
