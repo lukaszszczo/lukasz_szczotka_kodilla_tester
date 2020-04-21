@@ -20,7 +20,7 @@ public class BankApp {
 
 
         CashMachine second = new CashMachine("To bedzie drugi bankomat");
-        second.add(1000);
+        second.add(2000);
         second.add(-1000);
         second.add(3000);
         second.add(-1000);
@@ -38,23 +38,13 @@ public class BankApp {
 
         CashMachine[] cashMachines = new CashMachine[]{first, second}; // utworzenie tablicy bankomatów i przypisanie w 0 i 1 dwoch bankomatow
 
-        System.out.println("Saldo to: " + (cashMachines[0].getSum() + cashMachines[1].getSum())); // tak wiem ze to nie ma być tak.
 
-        Bank pko = new Bank("Bank PKO!"); // utworzenie banku1
-        Bank ing = new Bank("Bank ING!"); // utworzenie banku2
-
-        Bank[] banks = new Bank[]{pko, ing}; // mam tablice z dwoma bankami
+        Bank pko = new Bank("PKO",(cashMachines));
+        System.out.println("W banku: " + pko.bankName + " ilosc bankomatow to; " + pko.cashMachine.length); // ok zgadza sie ma przypisane dwa bankomaty.
+        System.out.println("Saldo dla Banku: " + pko.bankName + " to " + pko.sumAll());
 
 
-/*
 
-        System.out.println(banks[0].cashMachine.());
-        System.out.println(banks[1].bankName);
-
-        banks[0] = first;  ----------                                 takie wynalazki mi nie przechodza.
-        Bank[] banks = new Bank[]{first};
-        Bank[] banks = new Bank[]{first};
-*/
 
     }
 

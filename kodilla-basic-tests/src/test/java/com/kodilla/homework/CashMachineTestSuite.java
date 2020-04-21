@@ -97,6 +97,7 @@ public class CashMachineTestSuite {
         cashMachine.add(100);
         Assert.assertEquals(35.714, cashMachine.getPaymentAvg(), 0.001);
     }
+
     @Test
     public void shouldCalculateCashmachineAveragePayoff() {
         CashMachine cashMachine = new CashMachine("Test");
@@ -109,4 +110,17 @@ public class CashMachineTestSuite {
         cashMachine.add(-100);
         Assert.assertEquals(-35.714, cashMachine.getPayoffAvg(), 0.001);
     }
+
+    @Test
+    public void shouldCalculateAllSaldo() {
+        CashMachine cashMachine1 = new CashMachine("Test1");
+        CashMachine cashMachine2 = new CashMachine("Test2");
+        cashMachine1.add(10);
+        cashMachine2.add(20);
+        CashMachine[] cashMachines = new CashMachine[]{cashMachine1, cashMachine2};
+        Bank testowy = new Bank("testowy", (cashMachines));
+        assertEquals(30, testowy.sumAll());
+
+    }
+
 }
