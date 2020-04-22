@@ -26,6 +26,11 @@ public class Opel implements Car {
     }
 
     @Override
+    public int getRandomSpeed() {
+        return speed + increaseSpeed;
+    }
+
+    @Override
     public void increaseSpeed() {
         speed += increaseSpeed;
     }

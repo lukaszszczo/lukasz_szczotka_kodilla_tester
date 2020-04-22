@@ -2,9 +2,9 @@ package com.kodilla.collections.interfaces;
 
 public interface Shape {
 
-        double getArea();
+    double getArea();
 
-        double getPerimeter();
+    double getPerimeter();
 
 
 }

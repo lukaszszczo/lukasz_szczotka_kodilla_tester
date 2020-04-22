@@ -6,6 +6,8 @@ public interface Car {
 
     int getSpeed();
 
+    int getRandomSpeed();
+
     void increaseSpeed();
 
     void decreaseSpeed();
