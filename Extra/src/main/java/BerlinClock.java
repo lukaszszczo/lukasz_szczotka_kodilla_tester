@@ -15,10 +15,6 @@ public class BerlinClock {
         char yellow = 'Y';
         char red = 'R';
         char off = 'O';
-        int row1 = hours / 5;
-        int row2 = hours % 5;
-        int row3 = minutes / 5;
-        int row4 = minutes % 5;
         String timeString;
 
         timeString = String.format("%02d:%02d:%02d", hours, minutes, seconds);
@@ -31,35 +27,35 @@ public class BerlinClock {
         }
 
         System.out.print(" ");
-        for (int i = 0; i < row1; i++) {
+        for (int i = 0; i < hours / 5; i++) {
             System.out.print(red);
         }
-        for (int n = 0; n < 4 - row1; n++) {
+        for (int n = 0; n < 4 - hours / 5; n++) {
             System.out.print(off);
         }
         System.out.print(" ");
-        for (int i = 0; i < row2; i++) {
+        for (int i = 0; i < hours % 5; i++) {
             System.out.print(red);
         }
-        for (int n = 0; n < 4 - row2; n++) {
+        for (int n = 0; n < 4 - hours % 5; n++) {
             System.out.print(off);
         }
         System.out.print(" ");
-        for (int i = 1; i < row3 + 1; i++) {
+        for (int i = 1; i < minutes / 5 + 1; i++) {
             if (i % 3 == 0) {
                 System.out.print(red);
             } else {
                 System.out.print(yellow);
             }
         }
-        for (int i = 0; i < 11 - row3; i++) {
+        for (int i = 0; i < 11 - minutes / 5; i++) {
             System.out.print(off);
         }
         System.out.print(" ");
-        for (int i = 0; i < row4; i++) {
+        for (int i = 0; i < minutes % 5; i++) {
             System.out.print(yellow);
         }
-        for (int i = 0; i < 4 - row4; i++) {
+        for (int i = 0; i < 4 - minutes % 5; i++) {
             System.out.print(off);
 
         }

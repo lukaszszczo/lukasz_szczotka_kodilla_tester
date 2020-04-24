@@ -14,6 +14,7 @@
 public class BerlinClockApp {
     public static void main(String[] args) {
 
+
         BerlinClock test1 = new BerlinClock(00, 00, 00);
         BerlinClock test2 = new BerlinClock(13, 17, 01);
         BerlinClock test3 = new BerlinClock(23, 59, 59);
