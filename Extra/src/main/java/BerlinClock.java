@@ -61,6 +61,7 @@ public class BerlinClock {
         }
 
         System.out.println();
+        //zwracany jest pusty string
         return "";
     }
 
