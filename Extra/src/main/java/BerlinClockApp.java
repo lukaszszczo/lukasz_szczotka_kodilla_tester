@@ -15,14 +15,23 @@ public class BerlinClockApp {
     public static void main(String[] args) {
 
 
-        BerlinClock test1 = new BerlinClock(00, 00, 00);
-        BerlinClock test2 = new BerlinClock(13, 17, 01);
-        BerlinClock test3 = new BerlinClock(23, 59, 59);
-        BerlinClock test4 = new BerlinClock(24, 00, 00);
+        BerlinClock test1 = new BerlinClock(23, 33, 6);
+        BerlinClock test2 = new BerlinClock(13, 17, 1);
+        BerlinClock test3 = new BerlinClock(23, 59, 77);
+        BerlinClock test4 = new BerlinClock(24, 0, 0);
 
-        test1.getBerlinClockFormat();
-        test2.getBerlinClockFormat();
-        test3.getBerlinClockFormat();
-        test4.getBerlinClockFormat();
+
+        System.out.println(test1.getBerlinClockFormat());
+        System.out.println(test2.getBerlinClockFormat());
+        System.out.println(test3.getBerlinClockFormat());
+        System.out.println(test4.getBerlinClockFormat());
+
+
+
+        /*if (test2.startMethod() == true){ -- probowalem jakos warunkowo ale o dupe rozbic tyle rozpisywania sie
+        System.out.println(test1.getBerlinClockFormat());
+        } else test1.checkNumbers();*/
+
+
     }
 }
