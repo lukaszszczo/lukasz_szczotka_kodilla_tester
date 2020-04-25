@@ -1,3 +1,7 @@
+package Extra;
+
+import Extra.BerlinClock;
+
 /**
  * The Berlin Clock is composed of four rows of lights and a yellow lamp on the top
  * The top yellow light blinks every couple of seconds(on for even seconds,off for odd seconds).
