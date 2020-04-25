@@ -27,10 +27,13 @@ public class BerlinClock {
         } else if (seconds < 0 || seconds > 60) {
             start = false;
             System.out.print("Poza zakresem - sekundy!!!   ");
+        } else {
+            start = true;
         }
     }
 
     public boolean startMethod() { // do testow glownie
+        checkNumbers();
         return start;
     }
 
