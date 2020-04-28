@@ -8,7 +8,7 @@ public class School {
     private String schoolName;
 
 
-    private List<Integer> studentList = new ArrayList<>();
+    private List<Integer> studentList = new ArrayList<>(); // wrappery typów prymitywnych int a Integer - musze poczytac
 
     public School(String schoolName, int... studentList) {
         this.schoolName = schoolName;
