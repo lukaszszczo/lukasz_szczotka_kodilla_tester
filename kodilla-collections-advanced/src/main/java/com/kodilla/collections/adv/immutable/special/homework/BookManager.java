@@ -10,11 +10,12 @@ public class BookManager {
     public Book createBook(String title, String author) {
         Book book = new Book(title, author);
         // wiem ze to nie działa, zostawie to sobie na pozniej
-        if (((bookList.contains(book.getTitle())) && (bookList.contains(book.getAuthor()))) == false) {
+        if (bookList.contains(book) == false) {
             bookList.add(book);
-
+            return book;
+        } else {
+            return bookList.get(bookList.indexOf(book));
         }
-        return book;
     }
 
 

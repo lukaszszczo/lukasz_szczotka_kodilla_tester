@@ -5,17 +5,18 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FlightFinderTestSuite {
 
-    @Test
-    public void correctSize() {
-
-
-        FlightFinder find = new FlightFinder();
-        assertEquals(4, find.flightsList.size());
-    }
+//    @Test
+//    public void correctSize() {
+//
+//
+//        FlightFinder find = new FlightFinder();
+//        assertEquals(4, find.flightsList.size());
+//    }
 
     @Test
     public void shouldGetFlightDepartureSize() {
@@ -44,4 +45,28 @@ public class FlightFinderTestSuite {
     }
 
 
+    @Test
+    public void shouldGetFlightArrival_2() {
+        // given
+        FlightFinder find = new FlightFinder();
+
+        // when
+        List<Flight> result = find.findFlightsTo("Oslo");
+
+        // then
+        assertTrue(result.size() > 0);
+        for (Flight f : result) {
+            assertEquals("Oslo", f.getArrival());
+        }
+    }
+
+// jeden przylot ?
+//    dwa przyloty
+// zero przylotów
+//    jeden odlot ?
+//    dwa odloty
+//    zero odlotów
+
+//    null
+//    pusty string
 }
