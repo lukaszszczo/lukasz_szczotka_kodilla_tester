@@ -15,7 +15,7 @@ public class FlightFinderTestSuite {
 
 
         FlightFinder find = new FlightFinder();
-        assertEquals(5, find.flightsList.size());
+        assertEquals(4, find.flightsList.size());
     }
 
     @Test
@@ -24,7 +24,6 @@ public class FlightFinderTestSuite {
         FlightFinder find = new FlightFinder();
         assertEquals(2, find.findFlightsFrom("Berlin").size());
     }
-
 
 
     @Test
@@ -41,6 +40,7 @@ public class FlightFinderTestSuite {
             assertEquals("Cracow", f.getArrival());
         }
     }
+
     @Test
     public void shouldGetFlightTwoArrivals() {
         // given
@@ -55,16 +55,17 @@ public class FlightFinderTestSuite {
             assertEquals("Oslo", f.getArrival());
         }
     }
+
     @Test
     public void shouldGetFlightZeroArrivals() {
         // given
         FlightFinder find = new FlightFinder();
 
         // when
-        List<Flight> result = find.findFlightsTo("Katowice"); // brak takiego wpisu w FlightRepository
+        List<Flight> result = find.findFlightsTo("Katowice");
 
         // then
-        assertTrue(result.isEmpty() == true); // zastanawialem sie czy powinna zostac czy nie
+        assertTrue(result.isEmpty() == true);
         for (Flight f : result) {
             assertEquals(null, f.getArrival());
         }
@@ -86,6 +87,7 @@ public class FlightFinderTestSuite {
 
 
     }
+
     @Test
     public void shouldGetFlightTwoDepartures() {
         // given
@@ -102,6 +104,7 @@ public class FlightFinderTestSuite {
 
 
     }
+
     @Test
     public void shouldGetFlightZeroDepartures() {
         // given
@@ -117,6 +120,7 @@ public class FlightFinderTestSuite {
         }
 
     }
+
     @Test
     public void shouldGetFlightZeroDeparturesEmptyString() {
         // given
@@ -126,12 +130,11 @@ public class FlightFinderTestSuite {
         List<Flight> result = find.findFlightsFrom("");
 
         // then
-        assertTrue(result.isEmpty() == false);
-        for (Flight f : result) {
-            assertEquals(true, f.getDeparture().isEmpty());
-        }
+        assertTrue(result.isEmpty() == true);
+
 
     }
+
     @Test
     public void shouldGetFlightZeroArrivalsEmptyString() {
         // given
@@ -141,19 +144,18 @@ public class FlightFinderTestSuite {
         List<Flight> result = find.findFlightsTo("");
 
         // then
-        assertTrue(result.isEmpty() == false);
-        for (Flight f : result) {
-            assertEquals(true, f.getArrival().isEmpty());
-        }
+        assertTrue(result.isEmpty() == true);
+
 
     }
+
     @Test
     public void shouldGetFlightZeroArrivalsNull() {
         // given
         FlightFinder find = new FlightFinder();
 
         // when
-        List<Flight> result = find.findFlightsTo((null));
+        List<Flight> result = find.findFlightsTo(null);
 
         // then
         for (Flight f : result) {
@@ -161,6 +163,7 @@ public class FlightFinderTestSuite {
         }
 
     }
+
     @Test
     public void shouldGetFlightZeroDeparturesNull() {
         // given
@@ -175,13 +178,6 @@ public class FlightFinderTestSuite {
         }
 
     }
-
-
-
-
-
-
-
 
 
     // jeden przylot ?

@@ -12,9 +12,7 @@ public class FlightRepository {
         flightsTable.add(new Flight("Berlin", "Cracow"));
         flightsTable.add(new Flight("Tokio", "Warsaw"));
         flightsTable.add(new Flight("Berlin", "Oslo"));
-        flightsTable.add(new Flight("", ""));
-        /*te nulle sie nie kompiuja albo kompiluja ale z bledami :)
-        flightsTable.add(new Flight((null), (null)));*/
+
 
         return flightsTable;
     }
