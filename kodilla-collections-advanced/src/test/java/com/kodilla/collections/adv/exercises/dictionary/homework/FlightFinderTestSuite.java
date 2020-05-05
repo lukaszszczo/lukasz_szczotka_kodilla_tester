@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FlightFinderTestSuite {
 
@@ -14,7 +15,7 @@ public class FlightFinderTestSuite {
 
 
         FlightFinder find = new FlightFinder();
-        assertEquals(4, find.flightsList.size());
+        assertEquals(5, find.flightsList.size());
     }
 
     @Test
@@ -24,24 +25,128 @@ public class FlightFinderTestSuite {
         assertEquals(2, find.findFlightsFrom("Berlin").size());
     }
 
+
+
     @Test
-    public void shouldGetFlightDeparture() { //
+    public void shouldGetFlightOneArrival() {
+        // given
         FlightFinder find = new FlightFinder();
-        List<Flight> result = find.findFlightsFrom("Warsaw");
-        List<Flight> expectedList = new ArrayList<>();
-        expectedList.add(new Flight("Warsaw","Oslo"));
-        assertEquals(expectedList,result);
+
+        // when
+        List<Flight> result = find.findFlightsTo("Cracow");
+
+        // then
+        assertTrue(result.isEmpty() == false);
+        for (Flight f : result) {
+            assertEquals("Cracow", f.getArrival());
+        }
     }
     @Test
-    public void shouldGetFlightArrival() {
+    public void shouldGetFlightTwoArrivals() {
+        // given
         FlightFinder find = new FlightFinder();
+
+        // when
         List<Flight> result = find.findFlightsTo("Oslo");
-        List<Flight> expectedList =  new ArrayList<>();
-        expectedList.add(new Flight("Warsaw","Oslo"));
-        expectedList.add(new Flight("Berlin","Oslo"));
-        expectedList.add(new Flight("Berlin","Oslo"));
-        assertEquals(expectedList,result);
+
+        // then
+        assertTrue(result.isEmpty() == false);
+        for (Flight f : result) {
+            assertEquals("Oslo", f.getArrival());
+        }
     }
+    @Test
+    public void shouldGetFlightZeroArrivals() {
+        // given
+        FlightFinder find = new FlightFinder();
+
+        // when
+        List<Flight> result = find.findFlightsTo("Katowice"); // brak takiego wpisu w FlightRepository
+
+        // then
+        assertTrue(result.isEmpty() == true); // zastanawialem sie czy powinna zostac czy nie
+        for (Flight f : result) {
+            assertEquals(null, f.getArrival());
+        }
+    }
+
+    @Test
+    public void shouldGetFlightOneDepartures() {
+        // given
+        FlightFinder find = new FlightFinder();
+
+        // when
+        List<Flight> result = find.findFlightsFrom("Warsaw");
+
+        // then
+        assertTrue(result.size() > 0);
+        for (Flight f : result) {
+            assertEquals("Warsaw", f.getDeparture());
+        }
+
+
+    }
+    @Test
+    public void shouldGetFlightTwoDepartures() {
+        // given
+        FlightFinder find = new FlightFinder();
+
+        // when
+        List<Flight> result = find.findFlightsFrom("Berlin");
+
+        // then
+        assertTrue(result.size() > 0);
+        for (Flight f : result) {
+            assertEquals("Berlin", f.getDeparture());
+        }
+
+
+    }
+    @Test
+    public void shouldGetFlightZeroDepartures() {
+        // given
+        FlightFinder find = new FlightFinder();
+
+        // when
+        List<Flight> result = find.findFlightsFrom("Cracow");
+
+        // then
+        assertTrue(result.size() == 0);
+        for (Flight f : result) {
+            assertEquals("Cracow", f.getDeparture());
+        }
+
+    }
+    @Test
+    public void shouldGetFlightZeroDeparturesEmptyString() {
+        // given
+        FlightFinder find = new FlightFinder();
+
+        // when
+        List<Flight> result = find.findFlightsFrom("");
+
+        // then
+        assertTrue(result.isEmpty() == false);
+        for (Flight f : result) {
+            assertEquals("", f.getDeparture());
+        }
+
+    }
+
+
+
+
+
+
+    // jeden przylot ?
+//    dwa przyloty
+// zero przylotów
+//    jeden odlot ?
+//    dwa odloty
+//    zero odlotów
+
+//    null
+//    pusty string
 
 
 }

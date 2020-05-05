@@ -9,7 +9,11 @@ import java.util.List;
 public class FlightFinder {
 
 
-    public List<Flight> flightsList = FlightRepository.getFlightsTable();
+    public List<Flight> flightsList;
+
+    public FlightFinder() {
+        flightsList = FlightRepository.getFlightsTable();
+    }
 
 
     public List<Flight> findFlightsFrom(String departure) {
