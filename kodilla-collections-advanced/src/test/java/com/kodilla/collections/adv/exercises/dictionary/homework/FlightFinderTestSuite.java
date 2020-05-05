@@ -79,7 +79,7 @@ public class FlightFinderTestSuite {
         List<Flight> result = find.findFlightsFrom("Warsaw");
 
         // then
-        assertTrue(result.size() > 0);
+        assertTrue(result.isEmpty() == false);
         for (Flight f : result) {
             assertEquals("Warsaw", f.getDeparture());
         }
@@ -95,7 +95,7 @@ public class FlightFinderTestSuite {
         List<Flight> result = find.findFlightsFrom("Berlin");
 
         // then
-        assertTrue(result.size() > 0);
+        assertTrue(result.isEmpty() == false);
         for (Flight f : result) {
             assertEquals("Berlin", f.getDeparture());
         }
@@ -111,7 +111,7 @@ public class FlightFinderTestSuite {
         List<Flight> result = find.findFlightsFrom("Cracow");
 
         // then
-        assertTrue(result.size() == 0);
+        assertTrue(result.isEmpty() == true);
         for (Flight f : result) {
             assertEquals("Cracow", f.getDeparture());
         }
@@ -128,10 +128,56 @@ public class FlightFinderTestSuite {
         // then
         assertTrue(result.isEmpty() == false);
         for (Flight f : result) {
-            assertEquals("", f.getDeparture());
+            assertEquals(true, f.getDeparture().isEmpty());
         }
 
     }
+    @Test
+    public void shouldGetFlightZeroArrivalsEmptyString() {
+        // given
+        FlightFinder find = new FlightFinder();
+
+        // when
+        List<Flight> result = find.findFlightsTo("");
+
+        // then
+        assertTrue(result.isEmpty() == false);
+        for (Flight f : result) {
+            assertEquals(true, f.getArrival().isEmpty());
+        }
+
+    }
+    @Test
+    public void shouldGetFlightZeroArrivalsNull() {
+        // given
+        FlightFinder find = new FlightFinder();
+
+        // when
+        List<Flight> result = find.findFlightsTo((null));
+
+        // then
+        for (Flight f : result) {
+            assertEquals(null, f.getArrival());
+        }
+
+    }
+    @Test
+    public void shouldGetFlightZeroDeparturesNull() {
+        // given
+        FlightFinder find = new FlightFinder();
+
+        // when
+        List<Flight> result = find.findFlightsFrom((null));
+
+        // then
+        for (Flight f : result) {
+            assertEquals(null, f.getDeparture());
+        }
+
+    }
+
+
+
 
 
 
