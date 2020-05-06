@@ -5,4 +5,5 @@ include 'kodilla-collections'
 findProject(':kodilla-collections')?.name = 'kodilla-course'
 include 'Extra'
 include 'kodilla-collections-advanced'
+include 'kodilla-stream'
 

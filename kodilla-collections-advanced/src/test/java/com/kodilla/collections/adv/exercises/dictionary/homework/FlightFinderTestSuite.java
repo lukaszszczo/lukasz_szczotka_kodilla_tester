@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FlightFinderTestSuite {
@@ -66,9 +67,7 @@ public class FlightFinderTestSuite {
 
         // then
         assertTrue(result.isEmpty() == true);
-        for (Flight f : result) {
-            assertEquals(null, f.getArrival());
-        }
+
     }
 
     @Test
@@ -158,6 +157,7 @@ public class FlightFinderTestSuite {
         List<Flight> result = find.findFlightsTo(null);
 
         // then
+      //  assertNull(result.);
         for (Flight f : result) {
             assertEquals(null, f.getArrival());
         }
