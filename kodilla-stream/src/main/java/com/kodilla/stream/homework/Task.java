@@ -8,12 +8,6 @@ public class Task {
 
 
 
-    public LocalDate currentTime(){
-
-        LocalDate currentDate = LocalDate.now();
-      return currentDate;
-    }
-
     private String name;
     private LocalDate opened;
     private LocalDate deadline;
