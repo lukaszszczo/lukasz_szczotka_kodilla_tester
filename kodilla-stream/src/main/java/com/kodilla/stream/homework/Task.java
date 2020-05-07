@@ -6,8 +6,6 @@ import java.util.Objects;
 public class Task {
 
 
-
-
     private String name;
     private LocalDate opened;
     private LocalDate deadline;
