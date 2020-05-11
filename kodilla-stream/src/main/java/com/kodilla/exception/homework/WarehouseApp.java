@@ -20,15 +20,22 @@ public class WarehouseApp {
 
 
         while (true) {
-            System.out.println("Podaj nr zamowienia od 1 do 9");
+            System.out.println("Podaj nr zamowienia od 1 do 9 lub wpisz 'x' zeby wyjsc z programu");
             String s = scanner.nextLine();
+
+
             try {
-                test.getOrder(s); //szuakmy zamowienia wpisanego
+                if (s.equals("x")) {
+                    System.out.println("Koniec programu");
+                    break;
+                }
+                test.getOrder(s);
+                System.out.println("Zamówienie " + test.getOrder(s).getNumber() + " znajduje sie na liscie!") ;
             } catch (OrderDoesntExistException e) {
                 System.out.println("Nie ma takiego zamówienia!!");
                 System.out.println("Proszę o ponowane podanie numeru");
             } finally {
-                System.out.println("Dziękuje");
+                System.out.println("Dziękuje\n");
             }
 
 

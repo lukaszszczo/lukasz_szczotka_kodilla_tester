@@ -1,9 +1,17 @@
 package com.kodilla.optional.homework;
 
+import com.kodilla.optional.OptionalExample;
+
+import java.util.Optional;
+
 public class Student {
 
     private String name;
-    private Teacher teacher;
+    private Optional<Teacher> teacher;
+
+    public Optional<Teacher> getTeacher() {
+        return teacher;
+    }
 
     @Override
     public String toString() {
@@ -17,12 +25,10 @@ public class Student {
         return name;
     }
 
-    public Teacher getTeacher() {
-        return teacher;
-    }
+
 
     public Student(String name, Teacher teacher) {
         this.name = name;
-        this.teacher = teacher;
+        this.teacher = Optional.ofNullable(teacher);
     }
 }

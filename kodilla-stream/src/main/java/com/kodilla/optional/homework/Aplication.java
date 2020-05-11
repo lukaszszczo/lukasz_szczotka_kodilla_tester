@@ -2,7 +2,7 @@ package com.kodilla.optional.homework;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 public class Aplication {
     public static void main(String[] args) {
@@ -17,9 +17,7 @@ public class Aplication {
 
 
         for (Student temp : students) {
-            Optional <Teacher> optionalTeacher = Optional.ofNullable(temp.getTeacher());
-            Teacher teacher = optionalTeacher.orElse(new Teacher("<unifideded>"));
-            System.out.println("uczen " + temp.getName() + " nauczyciel " + teacher.getName());
+            System.out.println("uczen " + temp.getName() + " nauczyciel " + temp.getTeacher().orElse (new Teacher("<undefined>")));
 
 
         }
