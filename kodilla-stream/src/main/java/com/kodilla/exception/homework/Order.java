@@ -2,7 +2,7 @@ package com.kodilla.exception.homework;
 
 public class Order {
 
-    String number;
+    private String number;
 
     public String getNumber() {
         return number;

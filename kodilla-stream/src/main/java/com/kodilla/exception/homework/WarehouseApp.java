@@ -1,5 +1,6 @@
 package com.kodilla.exception.homework;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class WarehouseApp {
@@ -20,10 +21,16 @@ public class WarehouseApp {
 
 
         while (true) {
-            System.out.println("Podaj nr zamowienia od 1 do 9");
+            System.out.println("Podaj nr zamowienia od 1 do 9 lub x aby zakonczyc");
             String s = scanner.nextLine();
+
+            if (s.equalsIgnoreCase("x")){
+                break;
+            }
+
             try {
                 test.getOrder(s); //szuakmy zamowienia wpisanego
+                System.out.println("Znaleziono zamówienie!!");
             } catch (OrderDoesntExistException e) {
                 System.out.println("Nie ma takiego zamówienia!!");
                 System.out.println("Proszę o ponowane podanie numeru");
