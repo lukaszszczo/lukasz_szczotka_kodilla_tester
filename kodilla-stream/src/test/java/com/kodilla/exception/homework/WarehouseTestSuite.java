@@ -12,9 +12,10 @@ public class WarehouseTestSuite {
         Warehouse warehouse = new Warehouse();
         warehouse.addOrder(new Order("5"));
         //when
-        warehouse.getOrder("5");
+        String expected = warehouse.getOrder("5").getNumber();
+        String actual = warehouse.orders.get(0).getNumber();
         // then
-        assertEquals(warehouse.orders.get(0).getNumber(),warehouse.getOrder("5").getNumber());
+        assertEquals(actual, expected);
         // hej za duzo pipcenia tu jest juz widze
     }
 
@@ -24,9 +25,10 @@ public class WarehouseTestSuite {
         Warehouse warehouse = new Warehouse();
         warehouse.addOrder(new Order("5"));
         //when
-        warehouse.getOrder("99");
+        String actual = warehouse.orders.get(0).getNumber();
+        String expected = warehouse.getOrder("99").getNumber();
         // then
-        assertEquals(warehouse.orders.get(0).getNumber(),warehouse.getOrder("5").getNumber());
+        assertEquals(actual,expected);
 
     }
 
