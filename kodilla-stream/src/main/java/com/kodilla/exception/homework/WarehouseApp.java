@@ -19,7 +19,7 @@ public class WarehouseApp {
         Scanner scanner = new Scanner(System.in);
 
 
-        while(true){
+        while (true) {
             System.out.println("Podaj nr zamowienia od 1 do 9");
             String s = scanner.nextLine();
             try {
@@ -33,12 +33,6 @@ public class WarehouseApp {
 
 
         }
-
-
-
-
-
-
 
 
     }
