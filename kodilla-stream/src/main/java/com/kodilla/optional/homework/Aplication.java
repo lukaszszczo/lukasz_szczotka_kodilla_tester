@@ -21,6 +21,7 @@ public class Aplication {
             Teacher teacher = optionalTeacher.orElse(new Teacher("<unifideded>"));
             System.out.println("uczen " + temp.getName() + " nauczyciel " + teacher.getName());
 
+
         }
 
         }
