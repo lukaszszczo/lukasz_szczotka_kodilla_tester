@@ -17,7 +17,9 @@ public class Aplication {
 
 
         for (Student temp : students) {
-            System.out.println("uczen " + temp.getName() + " nauczyciel " + temp.getTeacher().orElse (new Teacher("<undefined>")));
+            System.out.println("uczen " + temp.getName() + " nauczyciel " + temp.getTeacher()
+                    .map(t -> t.getName()) // awwwwww
+                    .orElse (("<undefined>")));
 
 
         }
