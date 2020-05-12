@@ -12,15 +12,15 @@ import java.util.Set;
 
 public class GamblingMachineTestSuite {
 
-    GamblingMachine gamblingMachine = new GamblingMachine();
+    private GamblingMachine gamblingMachine = new GamblingMachine();
 
     @ParameterizedTest
-    @CsvFileSource(resources = "/integerNumbers.csv", numLinesToSkip = 1)
+    @CsvFileSource(resources = "/integerNumbers.csv")
     public void shouldGetNumberOfWins (int numbers) throws InvalidNumbersException {
         Set<Integer> tempSet = new HashSet<>();
         tempSet.add(numbers);
 
-        //System.out.println(gamblingMachine.howManyWins(tempSet));
+        System.out.println(gamblingMachine.howManyWins(tempSet));
 
 
     }

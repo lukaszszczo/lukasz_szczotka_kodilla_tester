@@ -17,16 +17,13 @@ public class Warehouse {
 
     public Order getOrder(String number) throws OrderDoesntExistException {
 
-        Optional<Order> optionalOrder = orders
+        return orders
                 .stream()
                 .filter(u -> u.getNumber().equals(number))
                 .findFirst()
-                /*.orElseThrow(new OrderDoesntExistException()) -? czemu :(*/;
+                .orElseThrow(() -> new OrderDoesntExistException());
 
-        if (!optionalOrder.isPresent()) {
-            throw new OrderDoesntExistException();
-        }
-        return optionalOrder.get();
+
     }
 
 
