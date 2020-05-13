@@ -13,7 +13,7 @@ public class UserValidatorTestSuite {
     private StringValidator validator = new StringValidator();
 
     @ParameterizedTest
-    @ValueSource(strings = {"aAzZ0.-_\n", "aaa\n", "...\n", "ooo\n", "000\n"})   /* nie rozumiem \n 	czemu w  metodzie validateUsername wymagane jest zrobienie nowej lini */
+    @ValueSource(strings = {"aAzZ0.-_", "aaa", "...", "ooo", "000"})
     public void shouldReturnTrueIfValidateIsCorrect(String username) {
         boolean result = test.validateUsername(username);
         assertTrue(result);
@@ -21,7 +21,8 @@ public class UserValidatorTestSuite {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"aA\n", "a\n", "\n"})
+    @NullAndEmptySource
+    @ValueSource(strings = {"aA", "a", ""})
     public void shouldReturnFalseIfValidateIsFalse(String username) {
         boolean result = test.validateUsername(username);
         assertFalse(result);
@@ -37,6 +38,7 @@ public class UserValidatorTestSuite {
     }
 
     @ParameterizedTest
+    @NullAndEmptySource
     @ValueSource(strings = {" @.pl, ", "0@0.0", "t@t.", "", "t@333333"})
     // dopisalem && !email.isEmpty() do metody bo przeuszczal pustego stringa
     public void shouldReturnFalseifEmailIsFalse(String email) {
@@ -48,13 +50,18 @@ public class UserValidatorTestSuite {
 
     @ParameterizedTest
     @NullAndEmptySource
-    public void shouldReturnTrueIfStringIsEmpty_Email(String email) {
-        assertTrue(validator.isBlank(email));
+    public void shouldReturnFalseifNullAndEmptySourceEmail(String email) {
+        boolean result = test.validateEmail(email);
+        assertFalse(result);
     }
 
     @ParameterizedTest
     @NullAndEmptySource
-    public void shouldReturnTrueIfStringIsEmpty(String username) {
-        assertTrue(validator.isBlank(username));
+    public void shouldReturnFalseifNullAndEmptySourceUsername(String username) {
+        boolean result = test.validateUsername(username);
+        assertFalse(result);
+
     }
+
+
 }
