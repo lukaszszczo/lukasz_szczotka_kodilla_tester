@@ -16,11 +16,11 @@ public class GamblingMachineTestSuite {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/integerNumbers.csv")
-    public void shouldGetNumberOfWins (int numbers) throws InvalidNumbersException {
-        Set<Integer> tempSet = new HashSet<>();
-        tempSet.add(numbers);
+    public void shouldGetNumberOfWins (Set<Integer> userNumbers) throws InvalidNumbersException {
+       /* Set<Integer> tempSet = new HashSet<>();
+        tempSet.add(numbers);*/
 
-        System.out.println(gamblingMachine.howManyWins(tempSet));
+        System.out.println(gamblingMachine.howManyWins(userNumbers));
 
 
     }
