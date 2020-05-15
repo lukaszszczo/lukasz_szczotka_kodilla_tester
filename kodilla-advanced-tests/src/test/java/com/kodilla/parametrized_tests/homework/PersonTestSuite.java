@@ -11,10 +11,11 @@ class PersonTestSuite {
 
     @ParameterizedTest
     @MethodSource(value = "com.kodilla.parametrized_tests.PersonSources#provideDataForTestingBmi")
-    public void shouldCalculateBmi(double heightInMeters, double weightInKilogram) {
+    public void shouldCalculateCorrectBmi(double heightInMeters, double weightInKilogram, String expectedOutput) {
 
         Person person = new Person(heightInMeters, weightInKilogram);
-        System.out.println(person.getBMI());
+        String result = person.getBMI();
+        assertEquals(expectedOutput, result);
 
     }
 
@@ -25,15 +26,13 @@ class PersonTestSuite {
         person.getBMI();
 
     }
-
     @ParameterizedTest
-    @MethodSource(value = "com.kodilla.parametrized_tests.PersonSources#provideDataForTestingBmi")
-    public void shouldCalculateBmi_under_15(double heightInMeters, double weightInKilogram) {
-
+    @MethodSource(value = "com.kodilla.parametrized_tests.WrongPersonSources#provideWrongDataForTestingBmi")
+    public void shouldCalculateWrongBmi(double heightInMeters, double weightInKilogram) {
         Person person = new Person(heightInMeters, weightInKilogram);
-        double bmi = weightInKilogram / (heightInMeters * heightInMeters);
+        String result = person.getBMI();
+        System.out.println(result);
 
-        assertTrue(bmi < 15, "Very severely underweight");
     }
 
 }

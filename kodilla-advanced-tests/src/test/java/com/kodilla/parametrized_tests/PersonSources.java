@@ -8,23 +8,18 @@ public class PersonSources {
 
     static Stream<Arguments> provideDataForTestingBmi() {
         return Stream.of(
-                Arguments.of(0, 0),
-                Arguments.of(0, 66),
-                Arguments.of(1, 66),
-                Arguments.of(1.7, 0),
-                Arguments.of(-1, 66),
-                Arguments.of(1.8, -500),
-                Arguments.of(1, 1),
-                Arguments.of(-1, -1),
-                Arguments.of(0.001, 0.001),
-                Arguments.of(1.75, 88),
-                Arguments.of(1.84, 100),
-                Arguments.of(1.98, 130),
-                Arguments.of(1.43, 55),
-                Arguments.of(1.66, 78),
-                Arguments.of(1.88, 345345345),
-                Arguments.of(1.77, 74),
-                Arguments.of(45345345, 99)
+
+                Arguments.of(1.77, 39, "Very severely underweight"),
+                Arguments.of(1.77, 49, "Severely underweight"),
+                Arguments.of(1.77, 54, "Underweight"),
+                Arguments.of(1.77, 77, "Normal (healthy weight)"),
+                Arguments.of(1.77, 88, "Overweight"),
+                Arguments.of(1.77, 109, "Obese Class I (Moderately obese)"),
+                Arguments.of(1.77, 119, "Obese Class II (Severely obese)"),
+                Arguments.of(1.77, 133, "Obese Class III (Very severely obese)"),
+                Arguments.of(1.77, 143, "Obese Class IV (Morbidly Obese)"),
+                Arguments.of(1.77, 163, "Obese Class V (Super Obese)")
+
         );
     }
 }
