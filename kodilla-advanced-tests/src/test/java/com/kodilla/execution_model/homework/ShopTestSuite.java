@@ -24,6 +24,7 @@ class ShopTestSuite {
         assertTrue(!shop.shopList.isEmpty());
 
     }
+
     @Test
     public void shouldGetMinOrderValue() throws Exception {
 
@@ -46,10 +47,9 @@ class ShopTestSuite {
 
         int result = shop.getOrdersBetween(LocalDate.of(2018, 5, 5), LocalDate.of(2020, 5, 5)).size();
 
-        assertEquals(3,result);
+        assertEquals(3, result);
 
     }
-
 
 
     @Test
@@ -65,30 +65,30 @@ class ShopTestSuite {
         assertEquals(1917, shop.getSumOrders());
 
     }
+
     @Test
     @NullAndEmptySource
-    public void shouldGetValueBetween(){
+    public void shouldGetValueBetween() {
 
-        int result = shop.getValueBetween(78,100).size();
-        assertEquals(3,result);
+        int result = shop.getValueBetween(78, 100).size();
+        assertEquals(3, result);
 
     }
+
     @Test
-    public void shouldGetCorrectSetValueBetween(){
+    public void shouldGetCorrectSetValueBetween() {
 
-        List<Order> result = shop.getValueBetween(78,100);
+        List<Order> result = shop.getValueBetween(78, 100);
 
-        for(Order temp : result){
+        for (Order temp : result) {
             System.out.println(temp.getValue());
         }
 
-        assertEquals(78,result.get(0).getValue());
-        assertEquals(88,result.get(1).getValue());
-        assertEquals(100,result.get(2).getValue());
+        assertEquals(78, result.get(0).getValue());
+        assertEquals(88, result.get(1).getValue());
+        assertEquals(100, result.get(2).getValue());
 
     }
-
-
 
 
     @BeforeEach

@@ -16,7 +16,7 @@ public class Shop {
 
 
     public List<Order> getOrdersBetween(LocalDate startDate, LocalDate endDate) {
-                return shopList
+        return shopList
                 .stream()
                 .filter(u -> u.getDate().isAfter(startDate))
                 .filter(u -> u.getDate().isBefore(endDate))
@@ -33,8 +33,6 @@ public class Shop {
                 .collect(Collectors.toList());
 
     }
-
-
 
 
     public double getMinOrder() throws Exception {
@@ -57,16 +55,17 @@ public class Shop {
 
 
     }
+
     public int getNumberOfOrders() {
         return shopList.size();
     }
 
-    public double getSumOrders(){
+    public double getSumOrders() {
         double sum = 0;
-        for (Order temp : shopList){
+        for (Order temp : shopList) {
             sum += temp.getValue();
         }
-      return sum;
+        return sum;
     }
 }
 
