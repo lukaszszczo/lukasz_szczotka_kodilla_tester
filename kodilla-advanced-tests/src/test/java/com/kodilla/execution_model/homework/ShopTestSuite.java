@@ -90,6 +90,13 @@ class ShopTestSuite {
 
     }
 
+    @Test
+    public void shouldGetException() {
+        shop.shopList.clear();
+        shop.shopList.get(0);
+
+    }
+
 
     @BeforeEach
     public void initializeShop() {

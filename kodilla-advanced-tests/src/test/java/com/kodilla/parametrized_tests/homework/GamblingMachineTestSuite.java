@@ -18,7 +18,7 @@ public class GamblingMachineTestSuite {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/correctIntegerNumbers.csv")
-    public void shouldGetCorrectNumberOfWins (int number1, int number2, int number3, int number4, int number5, int number6) throws InvalidNumbersException {
+    public void shouldGetCorrectNumberOfWins (Integer number1, Integer number2, Integer number3, Integer number4, Integer number5, Integer number6) throws InvalidNumbersException {
 
         Set<Integer> numbers = new HashSet<>();
         numbers.add(number1);
@@ -34,7 +34,7 @@ public class GamblingMachineTestSuite {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/incorrectIntegerNumbers.csv")
-    public void shouldGetException (int number1, int number2, int number3, int number4, int number5, int number6) throws InvalidNumbersException {
+    public void shouldGetExceptionIncorectRange (Integer number1, Integer number2, Integer number3, Integer number4, Integer number5, Integer number6) throws InvalidNumbersException {
         Set<Integer> numbers = new HashSet<>();
         numbers.add(number1);
         numbers.add(number2);
@@ -45,10 +45,51 @@ public class GamblingMachineTestSuite {
 
        assertThrows(InvalidNumbersException.class, () -> {
             gamblingMachine.howManyWins(numbers);
-            System.out.println(numbers);
-
     });
 
     }
+    @ParameterizedTest
+    @CsvFileSource(resources = "/incorrectLengthIntegerNumbers.csv")
+    public void shouldGetExceptionIncorectLengthNumber (Integer number1, Integer number2, Integer number3, Integer number4, Integer number5) throws InvalidNumbersException { // Dla kazdej ilosci argumentow mialbym robic test róznej od 6 ?
+        Set<Integer> numbers = new HashSet<>();
+        numbers.add(number1);
+        numbers.add(number2);
+        numbers.add(number3);
+        numbers.add(number4);
+        numbers.add(number5);
+
+        assertThrows(InvalidNumbersException.class, () -> {
+            gamblingMachine.howManyWins(numbers);
+        });
+    }
+        @ParameterizedTest
+        @CsvFileSource(resources = "/incorrectLengthIntegerNumbersPlusOne.csv")
+        public void shouldGetExceptionIncorectLengthNumberPlusOne(Integer number1, Integer number2, Integer number3, Integer number4, Integer number5, Integer number6, Integer number7) throws InvalidNumbersException {
+            Set<Integer> numbers = new HashSet<>();
+            numbers.add(number1);
+            numbers.add(number2);
+            numbers.add(number3);
+            numbers.add(number4);
+            numbers.add(number5);
+            numbers.add(number6);
+            numbers.add(number7);
+
+            assertThrows(InvalidNumbersException.class, () -> {
+                gamblingMachine.howManyWins(numbers);
+            });
+
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    public void shouldGetExceptionNullAndEmpty (Set<Integer> userNumbers) { // hmm nie wiem.
+        assertThrows(InvalidNumbersException.class, () -> {
+            gamblingMachine.howManyWins(userNumbers);
+        });
+
+    }
+
+
+
 
 }
