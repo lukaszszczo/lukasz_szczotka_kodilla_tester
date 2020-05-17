@@ -11,7 +11,7 @@ public class PersonSources {
 
                 Arguments.of(1.77, 39, "Very severely underweight"),
                 Arguments.of(1.77, 49, "Severely underweight"),
-                Arguments.of(1.77, 54, "Underweight"),
+                Arguments.of(1.77, 57, "Underweight"),
                 Arguments.of(1.77, 77, "Normal (healthy weight)"),
                 Arguments.of(1.77, 88, "Overweight"),
                 Arguments.of(1.77, 109, "Obese Class I (Moderately obese)"),

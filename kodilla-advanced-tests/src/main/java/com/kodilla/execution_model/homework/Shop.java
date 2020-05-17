@@ -1,9 +1,5 @@
 package com.kodilla.execution_model.homework;
 
-import java.io.NotActiveException;
-import java.security.acl.NotOwnerException;
-import java.time.Year;
-import java.time.temporal.ChronoUnit;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -11,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class Shop {
 
-    Set<Order> shopList = new HashSet<>();
+    List<Order> shopList = new ArrayList<>();
 
 
     public void addOrder(Order order) {
@@ -19,15 +15,27 @@ public class Shop {
     }
 
 
-    public Set<Order> getOrdersFromTwoYears() {
-        LocalDate currentDate = LocalDate.now();
-
-        return shopList
+    public List<Order> getOrdersBetween(LocalDate startDate, LocalDate endDate) {
+                return shopList
                 .stream()
-                .filter(u -> u.getDate().isAfter(currentDate.minusYears(2)))
-                .collect(Collectors.toSet());
+                .filter(u -> u.getDate().isAfter(startDate))
+                .filter(u -> u.getDate().isBefore(endDate))
+                .collect(Collectors.toList());
 
     }
+
+    public List<Order> getValueBetween(double minValue, double maxValue) {
+        return shopList
+                .stream()
+                .filter(u -> u.getValue() >= minValue)
+                .filter(u -> u.getValue() <= maxValue)
+                .sorted(Comparator.comparingDouble(Order::getValue))
+                .collect(Collectors.toList());
+
+    }
+
+
+
 
     public double getMinOrder() throws Exception {
 
