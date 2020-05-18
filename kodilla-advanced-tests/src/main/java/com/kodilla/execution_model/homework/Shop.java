@@ -2,12 +2,15 @@ package com.kodilla.execution_model.homework;
 
 
 import java.time.LocalDate;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 public class Shop {
 
-    List<Order> shopList = new ArrayList<>();
+    private List<Order> shopList = new ArrayList<>();
 
 
     public void addOrder(Order order) {
@@ -18,9 +21,9 @@ public class Shop {
     public List<Order> getOrdersBetween(LocalDate startDate, LocalDate endDate) {
         return shopList
                 .stream()
-                .filter(u -> u.getDate().isAfter(startDate))
-                .filter(u -> u.getDate().isBefore(endDate))
-                .collect(Collectors.toList());
+                .filter(u -> u.getDate().isAfter(startDate.minusDays(1)))
+                .filter(u -> u.getDate().isBefore(endDate.plusDays(1)))
+                .collect(toList());
 
     }
 
@@ -30,30 +33,25 @@ public class Shop {
                 .filter(u -> u.getValue() >= minValue)
                 .filter(u -> u.getValue() <= maxValue)
                 .sorted(Comparator.comparingDouble(Order::getValue))
-                .collect(Collectors.toList());
-
+                .collect(toList());
     }
 
 
-    public double getMinOrder() throws Exception {
-
+    public double getMinOrder() {
         return shopList
                 .stream()
-                .min(Comparator.comparingDouble(Order::getValue))
-                .map(u -> u.getValue())
-                .get();
-
+                .mapToDouble(Order::getValue)
+                .min()
+                .orElse(0.0d);
     }
 
-    public double getMaxOrder() throws Exception {
+    public double getMaxOrder() {
 
         return shopList
                 .stream()
                 .max(Comparator.comparingDouble(Order::getValue))
-                .map(u -> u.getValue())
+                .map(Order::getValue)
                 .get();
-
-
     }
 
     public int getNumberOfOrders() {
@@ -61,11 +59,10 @@ public class Shop {
     }
 
     public double getSumOrders() {
-        double sum = 0;
-        for (Order temp : shopList) {
-            sum += temp.getValue();
-        }
-        return sum;
+        return shopList
+                .stream()
+                .mapToDouble(Order::getValue)
+                .sum();
     }
 }
 
