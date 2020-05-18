@@ -51,6 +51,19 @@ class ShopTestSuite {
 
     }
 
+    @Test
+    public void shouldGetFromTwoYearsOrdersRange() {
+
+        List<Order> result = shop.getOrdersBetween(LocalDate.of(2018, 5, 15), LocalDate.of(2020, 5, 15));
+
+        for (Order temp : result){
+            System.out.println(temp.getLogin() + " " + temp.getDate() + " " + temp.getValue() );
+
+        }
+        assertTrue(result.get(0) == shop.shopList.get(1) && result.get(1) == shop.shopList.get(3));
+
+    }
+
 
     @Test
     public void shouldGetCorrectNumbersOfOrders() {
@@ -91,9 +104,11 @@ class ShopTestSuite {
     }
 
     @Test
-    public void shouldGetException() {
-        shop.shopList.clear();
-        shop.shopList.get(0);
+    @NullAndEmptySource
+    public void shouldGetEmptyList() {
+
+        List<Order> result = shop.getOrdersBetween(LocalDate.of(2021, 5, 15), LocalDate.of(2022, 5, 15));
+        assertTrue(result.isEmpty());
 
     }
 
@@ -103,7 +118,7 @@ class ShopTestSuite {
         shop.addOrder(new Order("adam", of(2020, 5, 15), 78));
         shop.addOrder(new Order("bodzio", of(2019, 5, 15), 234));
         shop.addOrder(new Order("sad", of(2018, 5, 15), 798));
-        shop.addOrder(new Order("qwerty", of(2019, 5, 15), 100));
+        shop.addOrder(new Order("qwerty", of(2019, 4, 15), 100));
         shop.addOrder(new Order("lukasz", of(2013, 5, 15), 587));
         shop.addOrder(new Order("ktos", of(2012, 5, 15), 88));
         shop.addOrder(new Order("ala", of(2011, 5, 15), 32));

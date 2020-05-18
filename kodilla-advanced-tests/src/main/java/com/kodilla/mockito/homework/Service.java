@@ -7,7 +7,7 @@ import java.util.Map;
 public class Service {
 
 
-    public Map<Location,User> map = new HashMap();
+    public Map<User,Location> map = new HashMap();
 
 
     public void addUser(User user){
