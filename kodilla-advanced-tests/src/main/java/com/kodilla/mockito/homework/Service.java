@@ -1,48 +1,55 @@
 package com.kodilla.mockito.homework;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Service {
 
-    private User user;
 
-    private List<User> users = new ArrayList<>();
-    private Map<Location, List<User>> userLocationMap = new HashMap();
+    Map<Location, List<User>> userLocationMap = new HashMap();
 
 
     public void addUserAndLocation(Location location, User user) {
 
-        this.userLocationMap.computeIfAbsent(location, k -> users).add(user); // hmmm
-
+        userLocationMap.putIfAbsent(location, new ArrayList<>());
+        userLocationMap.get(location).add(user);
     }
 
     public void sendNotificationToAll(Notification notification) {
-        this.userLocationMap.forEach((location, users) -> user.receive(notification));
+        this.userLocationMap
+                .forEach((location, users) -> users.forEach(user -> user.receive(notification)));
     }
 
-   /* public void deleteUserFromLocation(Location location, User user){
-        this.userLocationMap.entrySet()
-                .stream()
-                .filter(location -> location.getKey().equals(location))
-                .forEach();
-    }*/
 
-    public void removeUserFromMap(User user) {
-        this.userLocationMap.remove(user);
+    public void removeUserFromSubscribeList(User user) {
+        this.userLocationMap.values().removeIf(users -> users.contains(user));
 
     }
 
-    public void sendNotificationToLocation(Location location) {
-        userLocationMap.entrySet()
-                .stream()
-                .filter(user -> user.getValue().contains(location))
-                .forEach(user -> user.getKey());
+    public void removeLocation(Location location) {
+        if (userLocationMap.containsKey(location)) {
+            userLocationMap.remove(location);
+        }
 
 
     }
+
+    public void removeUserFromOneLocation(Location location, User user){ // to nie działa jeszcze
+            if(userLocationMap.containsValue(user)){
+                userLocationMap.entrySet().remove(location);
+            }
+    }
+
+
+    public void sendNotificationToLocation(Location location, Notification notification) {
+
+        if (userLocationMap.containsKey(location)) {
+            userLocationMap.get(location).forEach(user -> user.receive(notification));
+        }
+    }
+
+
 }
+
+
 
 

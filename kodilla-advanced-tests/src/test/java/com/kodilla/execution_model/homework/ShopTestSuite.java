@@ -5,41 +5,34 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 import static java.time.LocalDate.of;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ShopTestSuite {
 
+    private static final double MINIMUM_ORDER_VALUE = 32.0;
     Shop shop = new Shop();
 
 
     @Test
-    @NullAndEmptySource
     public void shouldAddNewOrder() {
-
-        shop.shopList.clear();
+        Shop shop = new Shop();
         shop.addOrder(new Order("test", of(2019, 6, 12), 555));
-        assertTrue(!shop.shopList.isEmpty());
-
+        assertEquals(1,shop.getNumberOfOrders());
     }
 
     @Test
     public void shouldGetMinOrderValue() throws Exception {
-
         Double minResult = shop.getMinOrder();
-        assertEquals(32.0, minResult);
-
+        assertEquals(MINIMUM_ORDER_VALUE, minResult);
     }
 
     @Test
     @NullAndEmptySource
     public void shouldGetMaxOrderValue() throws Exception {
-
         Double maxResult = shop.getMaxOrder();
         assertEquals(798.0, maxResult);
-
     }
 
     @Test
@@ -53,15 +46,17 @@ class ShopTestSuite {
 
     @Test
     public void shouldGetFromTwoYearsOrdersRange() {
-
-        List<Order> result = shop.getOrdersBetween(LocalDate.of(2018, 5, 15), LocalDate.of(2020, 5, 15));
-
-        for (Order temp : result){
-            System.out.println(temp.getLogin() + " " + temp.getDate() + " " + temp.getValue() );
-
+        // given
+        LocalDate startDate = of(2019, 5, 15);
+        LocalDate endDate = of(2020, 5, 15);
+        // when
+        List<Order> orders = shop.getOrdersBetween(startDate, endDate);
+        // then
+        assertTrue(orders.size()>0);
+        for (Order order : orders){
+            assertTrue(order.getDate().isAfter(startDate.minusDays(1)));
+            assertTrue(order.getDate().isBefore(endDate.plusDays(1)));
         }
-        assertTrue(result.get(0) == shop.shopList.get(1) && result.get(1) == shop.shopList.get(3));
-
     }
 
 
@@ -73,14 +68,12 @@ class ShopTestSuite {
     }
 
     @Test
-    @NullAndEmptySource
     public void shouldGetCorrectSumOfValue() {
         assertEquals(1917, shop.getSumOrders());
 
     }
 
     @Test
-    @NullAndEmptySource
     public void shouldGetValueBetween() {
 
         int result = shop.getValueBetween(78, 100).size();
@@ -104,7 +97,6 @@ class ShopTestSuite {
     }
 
     @Test
-    @NullAndEmptySource
     public void shouldGetEmptyList() {
 
         List<Order> result = shop.getOrdersBetween(LocalDate.of(2021, 5, 15), LocalDate.of(2022, 5, 15));

@@ -4,8 +4,6 @@ package com.kodilla.mockito.homework;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class ServiceTestSuite {
@@ -17,43 +15,107 @@ class ServiceTestSuite {
 
 
     @Test
-    public void shoudGetNotoficationUserSignedUp() {
+    public void shouldAddUserToNewLocation() {
+        // When
         service.addUserAndLocation(location, user);
-
-        service.sendNotificationToAll(notification);
-        Mockito.verify(user, Mockito.times(1)).receive(notification);
+        // Then
+        assertEquals(1, service.userLocationMap.size());
     }
+
+    @Test
+    public void shouldAddUserToExistingLocation() {
+        // Given
+        User user_1 = Mockito.mock(User.class);
+        User user_2 = Mockito.mock(User.class);
+        service.addUserAndLocation(location, user_1);
+        // When
+        service.addUserAndLocation(location, user_2);
+        // Then
+        assertEquals(1, service.userLocationMap.size());
+    }
+
+    @Test
+    public void shouldReceiveNotificationFromLocation() {
+        // Given
+        User user_1 = Mockito.mock(User.class);
+        Location location_1 = Mockito.mock(Location.class);
+        Location location_2 = Mockito.mock(Location.class);
+        service.addUserAndLocation(location, user);
+        service.addUserAndLocation(location_1, user_1);
+        service.addUserAndLocation(location_2, user_1);
+        // When
+        service.sendNotificationToLocation(location_1, notification);
+        // Then
+        Mockito.verify(user_1, Mockito.times(1)).receive(notification);
+    }
+
 
     @Test
     public void shoudNotGetNotoficationUserNotSignedUp() {
-
+        // then
         service.sendNotificationToAll(notification);
+        // when
         Mockito.verify(user, Mockito.never()).receive(notification);
     }
 
-
-    @Test
-    public void shouldDeleteUserFromOneLocation() {
-
-    }
 
     @Test
     public void shouldDeleteUserFromAllLocation() {
-        service.removeUserFromMap(user);
-        Mockito.verify(user, Mockito.never()).receive(notification);
+        // Given
+        User user_1 = Mockito.mock(User.class);
+        Location location_1 = Mockito.mock(Location.class);
+        Location location_2 = Mockito.mock(Location.class);
+        service.addUserAndLocation(location_1, user_1);
+        service.addUserAndLocation(location_2, user_1);
+
+        //When
+        service.removeUserFromSubscribeList(user_1);
+        service.sendNotificationToAll(notification);
+
+        //Then
+        assertEquals(0,service.userLocationMap.size());
+        Mockito.verify(user_1, Mockito.never()).receive(notification);
+
+    }
+    @Test
+    public void shouldDeleteFromLocation(){
+        //given
+        User user_1 = Mockito.mock(User.class);
+        User user_2 = Mockito.mock(User.class);
+        Location location_1 = Mockito.mock(Location.class);
+        Location location_2 = Mockito.mock(Location.class);
+        Location location_3 = Mockito.mock(Location.class);
+        Location location_4 = Mockito.mock(Location.class);
+        service.addUserAndLocation(location_1, user_1);
+        service.addUserAndLocation(location_2, user_2);
+        service.addUserAndLocation(location_3, user_2);
+        service.addUserAndLocation(location_4, user_2);
+
+        //when
+        service.removeLocation(location_2);
+
+
+        //then
+        assertEquals(3,service.userLocationMap.size());
+
+
+
 
     }
 
     @Test
     public void shouldGetNotificationInSpecificLocation() {
+        // given
         User user_1 = Mockito.mock(User.class);
         User user_2 = Mockito.mock(User.class);
         Location location_1 = Mockito.mock(Location.class);
         Location location_2 = Mockito.mock(Location.class);
         service.addUserAndLocation(location_1, user_1);
         service.addUserAndLocation(location_2, user_2);
-        service.sendNotificationToLocation(location_1);
 
+        // when
+        service.sendNotificationToLocation(location_1, notification);
+         // then
         Mockito.verify(user_1, Mockito.times(1)).receive(notification);
 
 
@@ -61,7 +123,23 @@ class ServiceTestSuite {
 
 
     @Test
-    public void shouldDeleteLocation() {
+    public void shouldDeleteUserFromOneLocation() {
+        // given
+        User user_1 = Mockito.mock(User.class);
+        Location location_1 = Mockito.mock(Location.class);
+        Location location_2 = Mockito.mock(Location.class);
+        Location location_3 = Mockito.mock(Location.class);
+        service.addUserAndLocation(location_1,user_1);
+        service.addUserAndLocation(location_2,user_1);
+        service.addUserAndLocation(location_3,user_1);
+
+        // then
+        service.removeUserFromOneLocation(location_2,user_1);
+
+
+        // when
+        assertEquals(2,service.userLocationMap.size());
+        Mockito.verify(user_1,Mockito.never()).receive(notification);
 
     }
 
