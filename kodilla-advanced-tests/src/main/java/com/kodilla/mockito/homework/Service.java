@@ -1,26 +1,31 @@
 package com.kodilla.mockito.homework;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Service {
 
-    private User user;
-
-    private List<User> users = new ArrayList<>();
-    private Map<Location, List<User>> userLocationMap = new HashMap();
-
+    Map<Location, List<User>> userLocationMap = new HashMap();
+//    private User user;
+//    private List<User> users = new ArrayList<>();
 
     public void addUserAndLocation(Location location, User user) {
 
-        this.userLocationMap.computeIfAbsent(location, k -> users).add(user); // hmmm
-
+//        this.userLocationMap.computeIfAbsent(location, k -> users).add(user); // hmmm
+        userLocationMap.putIfAbsent(location, new ArrayList<>());
+        userLocationMap.get(location).add(user);
     }
 
     public void sendNotificationToAll(Notification notification) {
-        this.userLocationMap.forEach((location, users) -> user.receive(notification));
+        this.userLocationMap
+                .forEach((location, users) -> users.forEach(user -> user.receive(notification)));
+
+//        userLocationMap.values().stream().forEach(users -> users.forEach(user -> user.receive(notification)));
+
+//        userLocationMap.values()
+//                .stream()
+//                .flatMap(Collection::stream)
+//                .distinct()
+//                .forEach(user -> user.receive(notification));
     }
 
    /* public void deleteUserFromLocation(Location location, User user){
@@ -35,13 +40,25 @@ public class Service {
 
     }
 
-    public void sendNotificationToLocation(Location location) {
-        userLocationMap.entrySet()
-                .stream()
-                .filter(user -> user.getValue().contains(location))
-                .forEach(user -> user.getKey());
+    public void sendNotificationToLocation(Location location, Notification notification) {
+//        userLocationMap.entrySet()
+//                .stream()
+//                .filter(entry -> entry.getKey().equals(location))
+//                .findFirst()
+//                .get()
+//                .getValue()
+//                .forEach(user -> user.receive(notification));
 
+//        userLocationMap.getOrDefault(location, new ArrayList<>()).forEach(user -> user.receive(notification));
 
+//        List userFromLocation = userLocationMap.get(location);
+//        if (userFromLocation != null) {
+//            userFromLocation.forEach();
+//        }
+
+        if (userLocationMap.containsKey(location)) {
+            userLocationMap.get(location).forEach(user -> user.receive(notification));
+        }
     }
 }
 
