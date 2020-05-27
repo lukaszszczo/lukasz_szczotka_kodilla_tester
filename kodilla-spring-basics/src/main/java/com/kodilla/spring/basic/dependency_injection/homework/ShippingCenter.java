@@ -7,7 +7,7 @@ public class ShippingCenter implements DeliveryService, NotificationService {
         if (deliverPackage(address, weight)) {
             success(address);
         }
-        fail(address);
+        else fail(address);
     }
 
     @Override
