@@ -47,16 +47,39 @@ class ShopTestSuite {
     @Test
     public void shouldGetFromTwoYearsOrdersRange() {
         // given
+        LocalDate startDate = of(2019, 5, 14);
+        LocalDate endDate = of(2020, 5, 16);
+        // when
+
+        List<Order> orders = shop.getOrdersBetween(startDate, endDate);
+        // then
+        for (Order order : orders){
+            assertTrue(order.getDate().isAfter(startDate));
+            assertTrue(order.getDate().isBefore(endDate));
+
+        }
+        System.out.println(orders.size());
+        assertTrue(orders.size()>0);
+
+    }
+
+    @Test
+    public void shouldGetFromTwoYearsOrdersRange_v2() {
+        // given
         LocalDate startDate = of(2019, 5, 15);
         LocalDate endDate = of(2020, 5, 15);
         // when
+
         List<Order> orders = shop.getOrdersBetween(startDate, endDate);
         // then
-        assertTrue(orders.size()>0);
         for (Order order : orders){
             assertTrue(order.getDate().isAfter(startDate.minusDays(1)));
             assertTrue(order.getDate().isBefore(endDate.plusDays(1)));
+
         }
+        System.out.println(orders.size());
+        assertTrue(orders.size()>0);
+
     }
 
 
