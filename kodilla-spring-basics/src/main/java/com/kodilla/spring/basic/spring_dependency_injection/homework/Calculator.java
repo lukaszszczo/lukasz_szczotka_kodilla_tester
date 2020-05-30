@@ -12,23 +12,28 @@ public class Calculator {
     }
 
     double add(double a, double b) {
-        return display.display(a + b);
+        double result = display.display(a + b);
+        return result;
     }
 
     double subtract(double a, double b) {
-        return display.display(a - b);
+        double result = display.display(a - b);
+        return result;
 
     }
 
     double multiply(double a, double b) {
-        return display.display(a * b);
+        double result = display.display(a * b);
+        return result;
     }
 
-    double divide(double a, double b) {
+    double divide(double a, double b) throws IllegalArgumentException {
         if (b == 0) {
-            return 0;
+            throw new IllegalArgumentException("Nie przez zero!");
         } else {
-            return display.display(a / b);
+            double result = display.display(a / b);
+            return result;
+
         }
     }
 

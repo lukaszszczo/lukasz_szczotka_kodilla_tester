@@ -1,6 +1,7 @@
 package com.kodilla.spring.basic.spring_dependency_injection.homework;
 
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
@@ -90,9 +91,15 @@ class CalculatorTestSuite {
     }
 
     @Test
-    void shoulNotDivideZero() {
-        Double result = bean.divide(0, 0);
-        assertEquals(0, result, 0.001);
+    void shoulNotDivideZero() throws IllegalArgumentException {
+
+        try {
+            Double result = bean.divide(1, 0);
+        } catch (IllegalArgumentException exception) {
+            assertTrue(exception.getMessage().contains("Nie przez zero!"));
+        }
+
+
 
     }
 
