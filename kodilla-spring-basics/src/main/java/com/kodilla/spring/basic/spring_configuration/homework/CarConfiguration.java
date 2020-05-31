@@ -35,17 +35,17 @@ public class CarConfiguration {
 
     @Bean
     public Car pickRandomCar() {
-        Car car;
+        Car car = null;
         String season = randomMonth();
         boolean lights = randomHours();
 
-        if (season == "Winter") {
+        if (season.equals("Winter")) {
             car = new SUV();
 
-        } else if (season == "Summer") {
+        } else if (season.equals("Summer")) {
             car = new Cabrio();
 
-        } else if (season == "Autumn" || season == "Spring") {
+        } else if (season.equals("Autumn") || season.equals("Spring")) {
             car = new Sedan();
 
         }
