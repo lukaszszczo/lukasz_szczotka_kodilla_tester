@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("single")
+@Scope("prototype")
 public class Clock {
 
     public Clock(){

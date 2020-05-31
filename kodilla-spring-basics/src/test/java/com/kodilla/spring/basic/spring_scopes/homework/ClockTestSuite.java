@@ -37,6 +37,11 @@ public class ClockTestSuite {
         Clock bean22= context.getBean(Clock.class);
         Clock bean23= context.getBean(Clock.class);
 
+        Assertions.assertNotEquals(bean, bean1);
+        Assertions.assertNotEquals(bean, bean23);
+        Assertions.assertNotEquals(bean1, bean22);
+        Assertions.assertNotEquals(bean5, bean6);
+
 
     }
 
