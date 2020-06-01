@@ -14,22 +14,25 @@ import java.util.List;
 
 public class CarConfigurationTestSuite {
 
+    ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
 
     @Test
     public void shouldCreateRandomCar() {
         //Given
-       ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
+
        Car car = (Car) context.getBean("pickRandomCar");
 
        //When
        String cars = car.getCarType();
+        System.out.println(car.getCarType());
 
        //then
 
         List<String> possibleCars = Arrays.asList("SUV", "Cabrio", "Sedan");
         Assertions.assertTrue(possibleCars.contains(cars));
 
-
-
     }
+
+
+
 }

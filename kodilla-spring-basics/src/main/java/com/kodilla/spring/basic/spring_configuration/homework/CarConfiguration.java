@@ -11,9 +11,9 @@ import java.util.Random;
 @Configuration
 public class CarConfiguration {
 
-    // bawilem sie z bilbioteka Date ale przeroslo mnie to, wygenerowanie losowej daty nie bylo problemem co pozniej filtracja tego.
-    // wiec troche uproscilem to... godziny losowane sa z zakresu 0-24 a pory roku tak jak ponizej
-    private boolean randomHours() {
+
+    @Bean
+    public boolean randomHours() {
         Random random = new Random();
         int result = random.nextInt(25);
 
@@ -26,7 +26,8 @@ public class CarConfiguration {
         }
 
     }
-    private String randomMonth() {
+    @Bean
+    public String randomMonth() {
         List<String> seasonList = Arrays.asList("Winter", "Spring", "Summer", "Autumn");
         Random random = new Random();
         int result = random.nextInt(3);
@@ -35,7 +36,7 @@ public class CarConfiguration {
 
     @Bean
     public Car pickRandomCar() {
-        Car car = null;
+        Car car = null; // ????  Variable 'car' might not have been initialized bez nulla
         String season = randomMonth();
         boolean lights = randomHours();
 
