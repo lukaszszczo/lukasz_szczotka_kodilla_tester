@@ -17,8 +17,7 @@ public class Calculator {
     }
 
     double subtract(double a, double b) {
-        double result = display.display(a - b);
-        return result;
+        return display.display(a - b);
 
     }
 

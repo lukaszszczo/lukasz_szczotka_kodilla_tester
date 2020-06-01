@@ -25,8 +25,8 @@ public class CarConfigurationTestSuite {
        //When
        String cars = car.getCarType();
         System.out.println(car.getCarType());
-
-       //then
+        System.out.println(car.hasHeadlightsTurnedOn());
+        //then
 
         List<String> possibleCars = Arrays.asList("SUV", "Cabrio", "Sedan");
         Assertions.assertTrue(possibleCars.contains(cars));
