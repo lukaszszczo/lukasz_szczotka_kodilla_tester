@@ -13,20 +13,6 @@ public class CarConfiguration {
 
 
     @Bean
-    public boolean randomHours() {
-        Random random = new Random();
-        int result = random.nextInt(25);
-
-        if (result >= 22 || result <= 6) {
-
-            return true;
-        } else {
-
-            return false;
-        }
-
-    }
-    @Bean
     public String randomMonth() {
         List<String> seasonList = Arrays.asList("Winter", "Spring", "Summer", "Autumn");
         Random random = new Random();
@@ -36,9 +22,9 @@ public class CarConfiguration {
 
     @Bean
     public Car pickRandomCar() {
-        Car car = null; // ????  Variable 'car' might not have been initialized bez nulla
+        Car car;
         String season = randomMonth();
-        boolean lights = randomHours();
+
 
         if (season.equals("Winter")) {
             car = new SUV();
@@ -46,7 +32,7 @@ public class CarConfiguration {
         } else if (season.equals("Summer")) {
             car = new Cabrio();
 
-        } else if (season.equals("Autumn") || season.equals("Spring")) {
+        } else {
             car = new Sedan();
 
         }
