@@ -45,10 +45,14 @@ public class BookControllerMvcTestSuite {
         booksList.add(new BookDto("title 2","author 2"));
         Mockito.when(bookService.getBooks()).thenReturn(booksList);
 
+        Gson gson = new Gson();
+        String json = gson.toJson(new BookDto("title 2","author 2"));
+        System.out.println(json);
         //when & then
-        mockMvc.perform(MockMvcRequestBuilders.get("/books").contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().is(200))
-                .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(2)));
+        mockMvc.perform(MockMvcRequestBuilders.post("/books").content(json)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().is(200));
+//                .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(2)));
     }
    /* @Test
     public void shouldAddBooks() throws Exception {
