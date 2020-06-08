@@ -15,40 +15,41 @@ import static org.junit.jupiter.api.Assertions.*;
 class BookControllerTestSuite {
 
 
-   @Test
-   public  void shouldFetchBooks(){
+    @Test
+    public void shouldFetchBooks() {
 
-       //Given
-       BookService bookServiceMock = Mockito.mock(BookService.class);
-       BookController bookController = new BookController(bookServiceMock);
+        //given
+
+        BookService bookServiceMock = Mockito.mock(BookService.class);
+        BookController bookController = new BookController(bookServiceMock);
         List<BookDto> bookList = new ArrayList<>();
-        bookList.add(new BookDto("test1","test1"));
-        bookList.add(new BookDto("test2","test2"));
+        bookList.add(new BookDto("test1", "test1"));
+        bookList.add(new BookDto("test2", "test2"));
         Mockito.when(bookServiceMock.getBooks()).thenReturn(bookList);
-       //When
+        //when
+
+        List<BookDto> result = bookController.getBooks();
+
+        //then
+        assertThat(result).hasSize(2);
 
 
-       List<BookDto> result = bookController.getBooks();
+    }
 
-       //Then
-       assertThat(result).hasSize(2);
+    @Test
+    public void shouldAddBook() {
 
+        //given
 
+        BookService bookServiceMock = Mockito.mock(BookService.class);
+        BookController bookController = new BookController(bookServiceMock);
 
-   }
+        //when
+        bookController.addBook(new BookDto("test1", "test1"));
 
-   @Test
-    public void shouldAddBook(){
+        //then
+        Mockito.verify(bookServiceMock).addBook(new BookDto("test1", "test1"));
+    }
 
-       //given
-       BookService bookServiceMock = Mockito.mock(BookService.class);
-       BookController bookController = new BookController(bookServiceMock);
-
-       //when
-        bookController.addBook(new BookDto("test1","test1"));
-
-       //then
-       Mockito.verify(bookServiceMock).addBook(new BookDto("test1","test1"));
-   }
 
 }
