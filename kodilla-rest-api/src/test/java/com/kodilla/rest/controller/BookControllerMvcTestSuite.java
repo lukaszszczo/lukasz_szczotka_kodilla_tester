@@ -14,16 +14,13 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(BookController.class)
@@ -41,22 +38,35 @@ public class BookControllerMvcTestSuite {
 
         //given
         List<BookDto> booksList = new ArrayList<>();
-        booksList.add(new BookDto("title 1","author 1"));
-        booksList.add(new BookDto("title 2","author 2"));
+        booksList.add(new BookDto("title 1", "author 1"));
+        booksList.add(new BookDto("title 2", "author 2"));
         Mockito.when(bookService.getBooks()).thenReturn(booksList);
 
         //when & then
         mockMvc.perform(MockMvcRequestBuilders.get("/books").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(200))
-                .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(2)));
+                .andExpect(jsonPath("$", Matchers.hasSize(2)));
     }
-   /* @Test
+
+    @Test
     public void shouldAddBooks() throws Exception {
+
         //given
+
         Gson gson = new Gson();
-        String json = gson.toJson(books);
-
-    }*/
+        String json = gson.toJson(new BookDto("title 2", "author 2"));
 
 
+
+        //when & then
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/books").content(json)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().is(200)).andExpect(content()// do tego miejsca pokazuje że jest ok, skoro jest ok to dlaczego nie widzi tego ponizej tylko twierdzi ze No value at JSON path "$.title" :/
+                .contentTypeCompatibleWith("/books/json")) // org.springframework.http.InvalidMediaTypeException: Invalid mime type "/books/UTF-8": 'type' must not be empty , w tym miejscu hmmmm
+                .andExpect(jsonPath("$.title").value("title 2"))
+                .andExpect(jsonPath("$.author").value("author 2")) ;
+
+
+
+    }
 }
