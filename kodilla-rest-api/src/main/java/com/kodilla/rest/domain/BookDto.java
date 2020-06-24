@@ -1,6 +1,5 @@
 package com.kodilla.rest.domain;
 
-import com.sun.istack.internal.NotNull;
 
 import java.util.Objects;
 

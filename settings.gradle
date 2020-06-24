@@ -10,4 +10,7 @@ include 'kodilla-advanced-tests'
 findProject(':kodilla-advanced-tests')?.name = 'com.kodilla'
 include 'kodilla-spring-basics'
 include 'kodilla-rest-api'
+include 'Jusia'
+findProject(':Jusia')?.name = 'Test'
+include 'kodilla-soap'
 

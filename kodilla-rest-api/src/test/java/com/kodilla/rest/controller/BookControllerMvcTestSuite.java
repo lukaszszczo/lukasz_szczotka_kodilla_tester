@@ -50,23 +50,16 @@ public class BookControllerMvcTestSuite {
 
     @Test
     public void shouldAddBooks() throws Exception {
-
         //given
+        BookDto bookToAdd = new BookDto("title 2", "author 2");
+        String bookAsJson = new Gson().toJson(bookToAdd);
 
-        Gson gson = new Gson();
-        String json = gson.toJson(new BookDto("title 2", "author 2"));
-
-
-
-        //when & then
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/books").content(json)
+        //when
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/books").content(bookAsJson)
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().is(200)).andExpect(content()// do tego miejsca pokazuje że jest ok, skoro jest ok to dlaczego nie widzi tego ponizej tylko twierdzi ze No value at JSON path "$.title" :/
-                .contentTypeCompatibleWith("/books/json")) // org.springframework.http.InvalidMediaTypeException: Invalid mime type "/books/UTF-8": 'type' must not be empty , w tym miejscu hmmmm
-                .andExpect(jsonPath("$.title").value("title 2"))
-                .andExpect(jsonPath("$.author").value("author 2")) ;
+                .andExpect(status().is(200));
 
-
-
+        //then
+        Mockito.verify(bookService).addBook(bookToAdd);
     }
 }
