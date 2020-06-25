@@ -1,15 +1,14 @@
 package com.kodilla.soap.library;
 
 import com.kodilla.courses.soap.Book;
-import com.kodilla.courses.soap.Course;
 import com.kodilla.courses.soap.Genre;
-import com.kodilla.courses.soap.Technology;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
+
 import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Date;
+
 
 @Component
 public class BookRepository {
@@ -21,7 +20,7 @@ public class BookRepository {
         javaFirst.setId("1/3");
         javaFirst.setGenre(Genre.TECH);
         javaFirst.setTitle("Pierwsza ksiązka");
-        javaFirst.setTitle("Pierwszy autor");
+        javaFirst.setAuthor("Pierwszy autor");
 
 
         books.put(javaFirst.getId(), javaFirst);
@@ -30,7 +29,7 @@ public class BookRepository {
         javaSecond.setId("2/3");
         javaSecond.setGenre(Genre.CRIME);
         javaSecond.setTitle("Druga ksiązka");
-        javaSecond.setTitle("Drugi autor");
+        javaSecond.setAuthor("Drugi autor");
 
 
         books.put(javaSecond.getId(), javaSecond);
@@ -39,7 +38,7 @@ public class BookRepository {
         javaThird.setId("3/3");
         javaThird.setGenre(Genre.FANTASY);
         javaThird.setTitle("Trzecia ksiązka");
-        javaThird.setTitle("Trzeci autor");
+        javaThird.setAuthor("Trzeci autor");
 
 
         books.put(javaThird.getId(), javaThird);
