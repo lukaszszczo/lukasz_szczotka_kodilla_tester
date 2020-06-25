@@ -29,7 +29,7 @@ configurations {
 task genJaxb {
     ext.sourcesDir = "${buildDir}/generated-sources/jaxb"
     ext.classesDir = "${buildDir}/classes/jaxb"
-    ext.schema = "src/main/resources/kodilla.xsd"
+    ext.schema = "src/main/resources/library.xsd"
 
     outputs.dir classesDir
 
