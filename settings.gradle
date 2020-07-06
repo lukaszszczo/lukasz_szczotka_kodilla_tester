@@ -13,4 +13,5 @@ include 'kodilla-rest-api'
 include 'Jusia'
 findProject(':Jusia')?.name = 'Test'
 include 'kodilla-soap'
+include 'kodilla-selenium'
 

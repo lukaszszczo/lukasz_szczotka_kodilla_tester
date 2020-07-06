@@ -34,9 +34,12 @@ public class Service {
     }
 
     public void removeUserFromOneLocation(Location location, User user){ // to nie działa jeszcze
-            if(userLocationMap.containsValue(user)){
-                userLocationMap.entrySet().remove(location);
-            }
+         for (Map.Entry<Location, List<User>> temp : userLocationMap.entrySet()) {
+             if(temp.getValue().equals(user)) {
+
+             }
+         }
+
     }
 
 

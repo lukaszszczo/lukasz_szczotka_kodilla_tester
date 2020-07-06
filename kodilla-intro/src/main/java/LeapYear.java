@@ -8,7 +8,7 @@ public class LeapYear {
     }
 
     public boolean isLeap() {
-        if ((this.leapYear % 4 == 0) && (this.leapYear % 100 > 0) || (this.leapYear % 400 == 0)) {
+        if ((leapYear % 4 == 0) && (leapYear % 100 > 0) || (leapYear % 400 == 0)) {
             return true;
         } else {
             return false;
@@ -18,9 +18,9 @@ public class LeapYear {
 
     public void isItLeap() {
         if (isLeap() == true) {
-            System.out.println(this.leapYear + " rok jest rokiem przestępnym");
+            System.out.println(leapYear + " rok jest rokiem przestępnym");
         } else {
-            System.out.println(this.leapYear + " rok nie rokiem przestępnym");
+            System.out.println(leapYear + " rok nie rokiem przestępnym");
         }
     }
 }
