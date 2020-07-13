@@ -16,10 +16,6 @@ public class isItFizzOrBuzz implements En {
             this.number = integer;
         });
 
-        Given("number is null", () -> {
-            this.number = Integer.parseInt(null);
-        });
-
 
         When("I run program", () -> {
             FizzBuzz fizzBuzz = new FizzBuzz();

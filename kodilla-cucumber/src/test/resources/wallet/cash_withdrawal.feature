@@ -1,7 +1,13 @@
-# new feature
-# Tags: optional
+Feature: Cash Withdrawal
     
-Feature: A description
-    
-Scenario: A scenario
-    Given something..
+Scenario Outline: Successful withdrawal from a wallet in credit
+    Given I have deposited <deposit> in my wallet
+    When I request <withdraw>
+    Then <withdraw> should be dispensed
+    And the balance of my wallet should be <balance>
+
+    Examples:
+    | deposit | withdraw | balance |
+    | 200     | 30     | 170 |
+    | 200     | 200    | 0 |
+    | 200     | 0      | 200 |
