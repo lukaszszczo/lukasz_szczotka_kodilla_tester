@@ -8,6 +8,11 @@ Scenario Outline: Successful withdrawal from a wallet in credit
 
     Examples:
     | deposit | withdraw | balance |
-    | 200     | 30     | 170 |
-    | 200     | 200    | 0 |
-    | 200     | 0      | 200 |
+    | 200     | 30       | 170 |
+    | 200     | 200      | 0 |
+    | 200     | 0        | 200 |
+    | 200     | 201      | -1 |
+    | 200     | -1       | 200 |
+    | 0       | 1        | -1 |
+    | 0       | -1       | 1 |
+    | 0       | 0        | 0 |
