@@ -7,10 +7,9 @@ Scenario Outline: FizzBuzz scenario
       Examples:
       | number | result |
       | 1 | "None" |
-      | 3 | "Fizz" |
+      | -3 | "Fizz" |
 	  | 5 | "Buzz" |
 	  | 15 | "FizzBuzz" |
 	  | 2 | "None" |
-	  | 16 | "None" |
-	  | 98 | "None" |
+	  | 0 | "None" |
 	  | 90 | "FizzBuzz" |

@@ -12,44 +12,14 @@ public class isItFizzOrBuzz implements En {
 
     public isItFizzOrBuzz() {
 
-        Given("number is 1", () -> {
-            this.number = 1;
+        Given("number is {int}", (Integer integer) -> {
+            this.number = integer;
         });
 
-
-        Given("number is 3", () -> {
-            this.number = 3;
+        Given("number is null", () -> {
+            this.number = Integer.parseInt(null);
         });
 
-
-        Given("number is 5", () -> {
-            this.number = 5;
-        });
-
-
-        Given("number is 15", () -> {
-            this.number = 15;
-        });
-
-
-        Given("number is 2", () -> {
-            this.number = 2;
-        });
-
-
-        Given("number is 16", () -> {
-            this.number = 16;
-        });
-
-
-        Given("number is 98", () -> {
-            this.number = 98;
-        });
-
-
-        Given("number is 90", () -> {
-            this.number = 90;
-        });
 
         When("I run program", () -> {
             FizzBuzz fizzBuzz = new FizzBuzz();
