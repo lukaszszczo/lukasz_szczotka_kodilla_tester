@@ -5,8 +5,6 @@ public class FizzBuzz {
     public String isItFizz(int number) {
 
 
-
-
         while (number != 0) {
             if (number % 3 == 0 && number % 5 == 0) {
                 return "FizzBuzz";
@@ -16,7 +14,8 @@ public class FizzBuzz {
                 return "Fizz";
             } else
                 return "None";
-        } return "None";
+        }
+        return "None";
     }
 }
 

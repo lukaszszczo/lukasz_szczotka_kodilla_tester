@@ -7,8 +7,17 @@ public class Teller {
         this.cashSlot = cashSlot;
     }
 
+    public String notification() {
+        return "I have insufficient funds in my account";
+    }
+
     public void withdraw(Wallet wallet, int amount) {
-        wallet.debit(amount);
-        cashSlot.dispense(amount);
+        if (amount <= wallet.getBalance()) {
+            wallet.debit(amount);
+            cashSlot.dispense(amount);
+        } else {
+            notification();
+        }
     }
 }
+
