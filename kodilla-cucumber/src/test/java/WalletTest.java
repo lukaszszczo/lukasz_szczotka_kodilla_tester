@@ -4,7 +4,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"src/test/resources/wallet/cash_prevent_notification.feature"}
+        features = {"src/test/resources/wallet/cash_prevent_wrong_amount.feature"}
 )
 public class WalletTest {
 }

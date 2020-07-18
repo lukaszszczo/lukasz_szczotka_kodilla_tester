@@ -58,6 +58,21 @@ public class WalletSteps implements En {
             Assert.assertTrue(wallet.getBalance() == 100);
         });
 
+        Given("I have deposited 200$ in my wallet", () -> {
+            wallet.deposit(200);
+        });
+
+        When("I requested 0$", () -> {
+            teller.withdraw(wallet,0);
+        });
+
+        Then("the balance of my wallet should be exacly 200$", () -> {
+            Assert.assertTrue(wallet.getBalance() == 200);
+        });
+
+        Then("I should be told that Wrong amount ", () -> {
+            Assert.assertEquals("Wrong amount", teller.display());
+        });
 
 
     }

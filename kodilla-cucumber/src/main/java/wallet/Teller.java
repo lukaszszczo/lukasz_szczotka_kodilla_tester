@@ -3,6 +3,7 @@ package wallet;
 public class Teller {
     private static final String OK_NOTIFICATION = "Success!!!";
     private static final String ERROR_NOTIFICATION = "I have insufficient funds in my account";
+    private static final String ERROR_NOTIFICATION_AMOUNT = "Wrong amount";
     private CashSlot cashSlot;
     private String notification;
 
@@ -15,12 +16,16 @@ public class Teller {
     }
 
     public void withdraw(Wallet wallet, int amount) {
-        if (amount <= wallet.getBalance()) {
-            wallet.debit(amount);
-            cashSlot.dispense(amount);
-            notification = OK_NOTIFICATION;
+        if (amount > 0) {
+            if (amount <= wallet.getBalance()) {
+                wallet.debit(amount);
+                cashSlot.dispense(amount);
+                notification = OK_NOTIFICATION;
+            } else {
+                notification = ERROR_NOTIFICATION;
+            }
         } else {
-            notification = ERROR_NOTIFICATION;
+            notification = ERROR_NOTIFICATION_AMOUNT;
         }
     }
 }
