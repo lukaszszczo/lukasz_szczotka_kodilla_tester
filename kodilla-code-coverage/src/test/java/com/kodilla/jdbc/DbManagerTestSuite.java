@@ -66,7 +66,7 @@ public class DbManagerTestSuite {
 
         //Given
         DbManager dbManager = DbManager.getInstance();
-        String countQuery = "SELECT COUNT(*) FROM USERS JOIN POSTS ON USERS.ID = POSTS.USER_ID GROUP BY POSTS.USER_ID HAVING COUNT(*) >= 2";
+        String countQuery = "SELECT COUNT(*) FROM USERS JOIN POSTS ON USERS.ID = POSTS.USER_ID GROUP BY POSTS.USER_ID HAVING COUNT(*) > 1";
         Statement statement = dbManager.getConnection().createStatement();
         ResultSet rs = statement.executeQuery(countQuery);
         int count = 0;
@@ -83,7 +83,7 @@ public class DbManagerTestSuite {
         statement.executeUpdate(sql);
 
         //When
-        String sqlQuery = "SELECT FIRSTNAME, LASTNAME, BODY FROM USERS INNER JOIN POSTS ON USERS.ID = POSTS.USER_ID HAVING COUNT(*) >= 2";
+        String sqlQuery = "SELECT FIRSTNAME, LASTNAME, COUNT(*) AS POSTS_NUMBER FROM USERS JOIN POSTS ON USERS.ID = POSTS.USER_ID GROUP BY POSTS.USER_ID HAVING COUNT(*) > 1 ";
         statement = dbManager.getConnection().createStatement();
         rs = statement.executeQuery(sqlQuery);
 
@@ -92,9 +92,9 @@ public class DbManagerTestSuite {
         while (rs.next()) {
             String firstname = rs.getString("USERS.FIRSTNAME");
             String lastname = rs.getString("USERS.LASTNAME");
-            String body = rs.getString("POSTS.BODY");
 
-            System.out.println(firstname + " " + lastname + " " + body);
+
+            System.out.println(firstname + " " + lastname + " " );
             counter++;
 
             counter++;
