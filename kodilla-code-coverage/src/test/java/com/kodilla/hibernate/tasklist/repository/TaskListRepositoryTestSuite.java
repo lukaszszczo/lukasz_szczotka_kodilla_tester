@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.Assert.*;
 
@@ -23,13 +24,12 @@ public class TaskListRepositoryTestSuite {
     private static final String listName = "FirstTest";
 
     @Test
-    public void testTaskRepositoryFindByDuration() {
+    public void testFindByListName() {
 
 
 
         //Given
-        TaskList taskList = new TaskList(listName, DESCRIPTION) {
-        };
+        TaskList taskList = new TaskList(listName, DESCRIPTION);
         taskListRepository.save(taskList);
         String listName = taskList.getListName();
 
@@ -37,7 +37,7 @@ public class TaskListRepositoryTestSuite {
         List<TaskList> readTasksList = taskListRepository.findByListName(listName);
 
         //Then
-        Assert.assertEquals(1, readTasksList.size());
+        Assert.assertTrue(readTasksList.get(0).getDescription().equals("Test: Learn Hibernate"));
 
         //CleanUp
 
@@ -45,4 +45,22 @@ public class TaskListRepositoryTestSuite {
 
 
     }
+
+    @Test
+    public void testTaskListRepositorySave () {
+        //Given
+        TaskList taskList = new TaskList(listName, DESCRIPTION);
+
+        //When
+        taskListRepository.save(taskList);
+
+        //Then
+        String listName = taskList.getListName();
+        List<TaskList> readTask = taskListRepository.findByListName(listName);
+        Assert.assertTrue(!readTask.isEmpty());
+
+        //CleanUp
+        taskListRepository.deleteById(listName);
+    }
+
 }

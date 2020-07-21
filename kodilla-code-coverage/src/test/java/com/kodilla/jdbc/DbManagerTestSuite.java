@@ -67,6 +67,8 @@ public class DbManagerTestSuite {
         //Given
         DbManager dbManager = DbManager.getInstance();
         String countQuery = "SELECT COUNT(*) FROM USERS JOIN POSTS ON USERS.ID = POSTS.USER_ID GROUP BY POSTS.USER_ID HAVING COUNT(*) > 1";
+        // SELECT FOUND_ROWS() zwraca licze z wczesniejszego zapytania
+
         Statement statement = dbManager.getConnection().createStatement();
         ResultSet rs = statement.executeQuery(countQuery);
         int count = 0;
@@ -75,11 +77,11 @@ public class DbManagerTestSuite {
         }
         String sql = "INSERT INTO POSTS (USER_ID, BODY) VALUES (2,'This is my first post too!')";
         statement.executeUpdate(sql);
-        sql = "INSERT INTO POSTS (USER_ID, BODY) VALUES (2,'This is my first post too!')";
+        sql = "INSERT INTO POSTS (USER_ID, BODY) VALUES (2,'This is my first post too0!')";
         statement.executeUpdate(sql);
-        sql = "INSERT INTO POSTS (USER_ID, BODY) VALUES (3,'Testowa wiadomosc')";
+        sql = "INSERT INTO POSTS (USER_ID, BODY) VALUES (4,'Testowa wiadomoscc')";
         statement.executeUpdate(sql);
-        sql = "INSERT INTO POSTS (USER_ID, BODY) VALUES (3,'Testowa wiadomosc')";
+        sql = "INSERT INTO POSTS (USER_ID, BODY) VALUES (4,'Testowa wiadomosc')";
         statement.executeUpdate(sql);
 
         //When
@@ -99,7 +101,7 @@ public class DbManagerTestSuite {
 
             counter++;
         }
-        int expected = count + 2;
+        int expected = count;
         Assert.assertEquals(expected, counter);
 
         rs.close();
