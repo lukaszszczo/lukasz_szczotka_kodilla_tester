@@ -9,9 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
-import java.util.Optional;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -21,7 +18,7 @@ public class TaskListRepositoryTestSuite {
     TaskListRepository taskListRepository;
 
     private static final String DESCRIPTION = "Test: Learn Hibernate";
-    private static final String listName = "FirstTest";
+    private static final String LIST_NAME = "FirstTest";
 
     @Test
     public void testFindByListName() {
@@ -29,15 +26,15 @@ public class TaskListRepositoryTestSuite {
 
 
         //Given
-        TaskList taskList = new TaskList(listName, DESCRIPTION);
+        TaskList taskList = new TaskList(LIST_NAME, DESCRIPTION);
         taskListRepository.save(taskList);
-        String listName = taskList.getListName();
+//        String LIST_NAME = taskList.getListName();
 
         //When
-        List<TaskList> readTasksList = taskListRepository.findByListName(listName);
+        List<TaskList> readTasksList = taskListRepository.findByListName(LIST_NAME);
 
         //Then
-        Assert.assertTrue(readTasksList.get(0).getDescription().equals("Test: Learn Hibernate"));
+        Assert.assertTrue(readTasksList.get(0).getDescription().equals(DESCRIPTION));
 
         //CleanUp
 
@@ -49,7 +46,7 @@ public class TaskListRepositoryTestSuite {
     @Test
     public void testTaskListRepositorySave () {
         //Given
-        TaskList taskList = new TaskList(listName, DESCRIPTION);
+        TaskList taskList = new TaskList(LIST_NAME, DESCRIPTION);
 
         //When
         taskListRepository.save(taskList);

@@ -66,7 +66,10 @@ public class DbManagerTestSuite {
 
         //Given
         DbManager dbManager = DbManager.getInstance();
+//        String countQuery = "SELECT COUNT(*) FROM \n" +
+//                "( SELECT USER_ID FROM USERS JOIN POSTS ON USERS.ID = POSTS.USER_ID GROUP BY POSTS.USER_ID HAVING COUNT(*) > 1 ) USERS_WITH_MANY_POSTS;";
         String countQuery = "SELECT COUNT(*) FROM USERS JOIN POSTS ON USERS.ID = POSTS.USER_ID GROUP BY POSTS.USER_ID HAVING COUNT(*) > 1";
+
         // SELECT FOUND_ROWS() zwraca licze z wczesniejszego zapytania
 
         Statement statement = dbManager.getConnection().createStatement();
@@ -99,7 +102,6 @@ public class DbManagerTestSuite {
             System.out.println(firstname + " " + lastname + " " );
             counter++;
 
-            counter++;
         }
         int expected = count;
         Assert.assertEquals(expected, counter);
