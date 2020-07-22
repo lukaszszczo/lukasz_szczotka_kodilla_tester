@@ -33,12 +33,12 @@ public class Service {
 
     }
 
-    public void removeUserFromOneLocation(Location location, User user){ // to nie działa jeszcze
-         for (Map.Entry<Location, List<User>> temp : userLocationMap.entrySet()) {
-             if(temp.getValue().equals(user)) {
-
-             }
-         }
+    public void removeUserFromOneLocation(Location location, User user){
+        for (Map.Entry<Location, List<User>> temp : userLocationMap.entrySet()) {
+            if (temp.getKey().equals(location)) {
+                temp.getValue().remove(user);
+            }
+        }
 
     }
 

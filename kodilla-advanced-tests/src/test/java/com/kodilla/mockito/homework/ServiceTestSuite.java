@@ -126,19 +126,22 @@ class ServiceTestSuite {
     public void shouldDeleteUserFromOneLocation() {
         // given
         User user_1 = Mockito.mock(User.class);
+        User user_2 = Mockito.mock(User.class);
+        User user_3 = Mockito.mock(User.class);
         Location location_1 = Mockito.mock(Location.class);
         Location location_2 = Mockito.mock(Location.class);
         Location location_3 = Mockito.mock(Location.class);
         service.addUserAndLocation(location_1,user_1);
         service.addUserAndLocation(location_2,user_1);
-        service.addUserAndLocation(location_3,user_1);
+        service.addUserAndLocation(location_3,user_3);
 
         // then
-        service.removeUserFromOneLocation(location_2,user_1);
+        service.removeUserFromOneLocation(location_1,user_1);
+        service.sendNotificationToLocation(location_1, notification);
 
 
         // when
-        assertEquals(2,service.userLocationMap.size());
+
         Mockito.verify(user_1,Mockito.never()).receive(notification);
 
     }
