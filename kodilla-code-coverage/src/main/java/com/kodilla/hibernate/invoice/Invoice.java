@@ -12,12 +12,11 @@ public class Invoice {
     private int id;
     private String number;
     private List<Item> items = new ArrayList<>();
-    private Item item;
 
 
     @OneToMany(
             targetEntity = Item.class,
-            mappedBy = "Invoice",
+            mappedBy = "invoice",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
@@ -27,6 +26,9 @@ public class Invoice {
 
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+
+    public Invoice() {
     }
 
     public Invoice(String number) {
@@ -47,7 +49,7 @@ public class Invoice {
     }
 
     @NotNull
-    @Column(name = "NUMBER")
+    @Column(name = "INVOICE_NUMBER")
     public String getNumber() {
         return number;
     }
