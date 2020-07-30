@@ -74,12 +74,12 @@ class ServiceTestSuite {
         service.addUserAndLocation(location_2, user_2);
 
         //When
-        service.removeUserFromSubscribeList(user_1);
+        service.removeUserFromSubscribeList_2(user_1);
         service.sendNotificationToAll(notification);
 
         //Then
         assertEquals(2,service.userLocationMap.size());
-      //  Mockito.verify(user_1, Mockito.never()).receive(notification);
+        Mockito.verify(user_1, Mockito.never()).receive(notification);
         Mockito.verify(user_3, Mockito.times(1)).receive(notification);
 
     }

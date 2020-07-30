@@ -23,6 +23,15 @@ public class Service {
     public void removeUserFromSubscribeList(User user) {
         userLocationMap.values().remove(user);
 
+
+    }
+
+    public void removeUserFromSubscribeList_2(User user) {
+        for (List<User> users : userLocationMap.values()) {
+            users.remove(user);
+        }
+
+
     }
 
 
