@@ -21,9 +21,11 @@ public class Service {
 
 
     public void removeUserFromSubscribeList(User user) {
-        this.userLocationMap.values().removeIf(users -> users.contains(user));
+        userLocationMap.values().remove(user);
 
     }
+
+
 
     public void removeLocation(Location location) {
         if (userLocationMap.containsKey(location)) {
@@ -41,6 +43,19 @@ public class Service {
         }
 
     }
+    public void removeUserFromOneLocation_2(Location location, User user){
+        if (userLocationMap.containsKey(location)) {
+
+            if(userLocationMap.get(location).contains(user)) {
+               userLocationMap.get(location).remove(user);
+            }
+
+        }
+
+
+    }
+
+
 
 
     public void sendNotificationToLocation(Location location, Notification notification) {
